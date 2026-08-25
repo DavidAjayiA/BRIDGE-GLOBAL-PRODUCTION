@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge Global Productions — We Bridge The Gap</title>
+<link rel="icon" type="image/png" href="logo.ico.jpeg">
+<meta name="description" content="Bridge Global Productions is a premium media and production company producing original shows, brand films, documentaries and live event coverage — connecting African stories to a global audience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0C10;
+    --ink-2:#12151C;
+    --ink-3:#1B1F29;
+    --paper:#F3EFE6;
+    --paper-2:#EAE4D6;
+    --gold:#D6202B;
+    --gold-2:#F0464F;
+    --text-on-ink:#F2F1EE;
+    --text-on-ink-muted:#e4e4e4;
+    --text-on-paper:#141414;
+    --text-on-paper-muted:#6B6B6B;
+    --line-on-ink:rgba(242,241,238,0.14);
+    --line-on-paper:rgba(20,20,20,0.14);
+    --font-display:'Archivo Black', 'Inter', sans-serif;
+    --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+    --container: 1180px;
+    --radius: 2px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    /* font-family:var(--font-body); */
+    font-family: 'Poppin', sans-serif;
+    background:var(--ink);
+    color:var(--text-on-ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;
+  background:var(--gold);display:inline-block;
+}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;letter-spacing:0.005em;text-transform:uppercase;line-height:1.02;}
+  .btn{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 22px;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    background:transparent;
+    cursor:pointer;
+    transition:background .25s ease, color .25s ease, transform .25s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{background:var(--gold);
+    color:#fff;
+    transform:translateY(-1px);
+  }
+  .btn.solid{background:var(--gold);color:#fff;}
+  .btn.solid:hover{background:var(--gold-2);border-color:var(--gold-2);}
+  .btn:focus-visible, a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:20px 0;
+    transition:background .35s ease, padding .35s ease, border-color .35s ease;
+    border-bottom:1px solid transparent;
+  }
+  header.nav.scrolled{
+    background:rgba(10,12,16,0.88);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    border-bottom:1px solid var(--line-on-ink);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;}
+  .logo{
+    font-family:var(--font-display);
+    font-size:17px;
+    letter-spacing:0.01em;
+    display:flex;align-items:baseline;gap:8px;
+    text-transform:uppercase;
+  }
+  .logo .mark{color:var(--gold);}
+  .logo .sub{
+    font-family:var(--font-mono);
+    font-size:9.5px;
+    letter-spacing:.1em;
+    /* color:var(--text-on-ink-muted); */
+    color: white;
+    text-transform:uppercase;font-weight:400;
+      /* border: 3px solid red; */
+  }
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-on-ink-muted);
+    transition:color .2s ease;
+    position:relative;
+  }
+  .nav-links a:hover{color:var(--text-on-ink);}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:20px;}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{width:22px;height:1px;background:var(--text-on-ink);display:block;transition:.3s;}
+  .mobile-panel{
+    position:fixed;inset:0;background:var(--ink);z-index:99;
+    display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:28px;gap:26px;
+    transform:translateY(-100%);transition:transform .4s ease;
+  }
+  .mobile-panel.open{transform:translateY(0);}
+  .mobile-panel a{font-family:var(--font-display);font-size:32px;color:var(--text-on-ink);}
+  .mobile-panel .btn{margin-top:12px;}
+
+  .clip-play{cursor:pointer;transition:opacity .3s ease;}
+.clip-play.is-playing{opacity:0;}
+.clip-card:hover .clip-play.is-playing{opacity:1;}
+
+  @media (max-width:900px){
+    .nav-links, .nav-cta .btn{display:none;}
+    .burger{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 15%, rgba(201,162,39,0.16), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 85% 85%, rgba(201,162,39,0.10), transparent 55%),
+      linear-gradient(160deg, #0A0C10 0%, #14171F 45%, #0A0C10 100%);
+    background-size:200% 200%;
+    animation:driftBg 22s ease-in-out infinite;
+  }
+  @keyframes driftBg{
+    0%{background-position:0% 0%;}
+    50%{background-position:100% 60%;}
+    100%{background-position:0% 0%;}
+  }
+  .hero-video{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    opacity:0;transition:opacity 1.2s ease;z-index:1;
+  }
+  .hero-video.visible{opacity:0.55;}
+  .hero-grain{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+  .film-perf{
+    position:absolute;left:0;right:0;z-index:5;height:16px;display:flex;justify-content:space-evenly;align-items:center;
+    pointer-events:none;
+  }
+  .film-perf span{width:7px;height:7px;border-radius:1px;background:rgba(242,241,238,0.16);}
+  .film-perf.top{top:0;}
+  .film-perf.bottom{bottom:0;}
+  .reel-badge{
+    position:absolute;z-index:5;right:28px;bottom:28px;
+    display:flex;align-items:center;gap:9px;
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--text-on-ink-muted);
+    border:1px solid var(--line-on-ink);padding:8px 14px;
+    background:rgba(10,10,10,0.35);backdrop-filter:blur(4px);
+  }
+  .reel-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 1.8s ease-in-out infinite;}
+  .hero-sweep{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:linear-gradient(100deg, transparent 40%, rgba(214,32,43,0.07) 50%, transparent 60%);
+    background-size:300% 300%;
+    animation:sweepMove 9s ease-in-out infinite;
+  }
+  @keyframes sweepMove{
+    0%{background-position:120% 0%;}
+    50%{background-position:-20% 100%;}
+    100%{background-position:120% 0%;}
+  }
+  .hero-overlay{
+    position:absolute;inset:0;z-index:3;
+    background:linear-gradient(180deg, rgba(10,12,16,0.15) 0%, rgba(10,12,16,0.35) 55%, rgba(10,12,16,0.95) 100%);
+  }
+  .hero-content{position:relative;z-index:4;padding:0 28px 90px;max-width:var(--container);margin:0 auto;width:100%;}
+  .hero-tag{margin-bottom:26px;}
+  .hero-content h1{
+    font-size:clamp(44px, 8vw, 104px);
+    line-height:0.98;
+    max-width:920px;
+    color:var(--text-on-ink);
+  }
+  .hero-content h1 em{font-style:normal;color:var(--gold);}
+  .hero-sub{
+    margin-top:24px;max-width:520px;
+    color:var(--text-on-ink-muted);
+    font-size:16px;line-height:1.7;
+  }
+  .hero-actions{
+    display:flex;gap:16px;
+    flex-wrap:wrap;margin-top:38px;
+  }
+  .hero-foot{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    margin-top:64px;padding-top:24px;border-top:1px solid var(--line-on-ink);
+    max-width:920px;
+  }
+  .hero-scroll{font-family:var(--font-mono);
+    font-size:11px;letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--text-on-ink-muted);
+    display:flex;align-items:center;
+    gap:10px;
+  }
+  .hero-scroll .dot
+  {width:6px;height:6px;border-radius:50%;
+    background:var(--gold);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+  .hero-loc{font-family:var(--font-mono);
+  font-size:11px;color:var(--text-on-ink-muted);
+  letter-spacing:.06em;}
+
+  @media (max-width:600px){
+    .hero-foot{flex-direction:column;align-items:flex-start;gap:14px;}
+  }
+
+  /* ---------- BRIDGE SIGNATURE ARC ---------- */
+  .bridge-arc{
+    position:relative;background:var(--ink);padding:70px 0 30px;
+    display:flex;justify-content:center;overflow:hidden;
+  }
+  .bridge-arc svg{width:100%;max-width:1100px;height:auto;}
+  .bridge-arc .arc-path{
+    stroke:var(--gold);stroke-width:1.4;fill:none;
+    stroke-dasharray:1400;stroke-dashoffset:1400;
+    transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1);
+  }
+  .bridge-arc.in-view .arc-path{stroke-dashoffset:0;}
+  .bridge-arc text{
+    font-family:var(--font-display);fill:var(--text-on-ink);
+    font-size:22px;letter-spacing:0.02em;text-transform:uppercase;
+  }
+  .bridge-arc .node{fill:var(--gold);opacity:0;transition:opacity .6s ease .9s;}
+  .bridge-arc.in-view .node{opacity:1;}
+
+  /* ---------- SERVICES SECTION ---------- */
+  section{padding:120px 0;position:relative;}
+  .on-paper{background:var(--paper);color:var(--text-on-paper);}
+  .on-paper .eyebrow{color:#A8151E;}
+  .on-paper .eyebrow::before{background:#A8151E;}
+  .section-head{max-width:640px;margin-bottom:56px;
+  }
+  .section-head h2{font-size:clamp(30px,4vw,40px);
+    margin-top:16px;line-height:1.5;
+    /* border: 3px solid blue; */
+  }
+  .reveal{
+    /* border: 3px solid red; */
+    opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;
+  
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- FOUNDER ---------- */     
+  .founder{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .founder-quote{font-family:var(--font-body);font-weight:500;font-style:italic;font-size:clamp(20px,2.4vw,27px);line-height:1.5;color:var(--text-on-paper);}
+  .founder-quote span{color:#A8151E;}
+
+.founder-meta{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:28px;
+  }
+
+
+  .founder-portrait{
+    aspect-ratio:4/5;background:linear-gradient(155deg,#1B1F29,#0A0C10);
+    border:1px solid var(--line-on-paper);
+    display:flex;align-items:flex-end;padding:22px;position:relative;overflow:hidden;
+  }
+  .founder-portrait::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(201,162,39,0.25), transparent 55%);
+  }
+  .founder-portrait .cap{position:relative;font-family:var(--font-mono);font-size:11px;color:var(--gold-2);letter-spacing:.08em;text-transform:uppercase;}
+  @media (max-width:860px){.founder{grid-template-columns:1fr;gap:44px;}.founder-portrait{order:-1;max-width:280px;}}
+
+  /* ---------- VALUES TICKER ---------- */
+  .ticker-wrap{overflow:hidden;border-top:1px solid var(--line-on-ink);border-bottom:1px solid var(--line-on-ink);padding:22px 0;margin:70px 0;}
+  .ticker{display:flex;gap:0;width:max-content;animation:scrollTicker 32s linear infinite;}
+  .ticker span{
+    font-family:var(--font-display);font-size:16px;letter-spacing:.02em;text-transform:uppercase;color:var(--text-on-ink-muted);
+    padding:0 34px;white-space:nowrap;
+  }
+  .ticker span.gold{color:var(--gold);}
+  .ticker span:not(:last-child)::after{content:"•";margin-left:34px;color:var(--gold);font-style:normal;}
+  @keyframes scrollTicker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- VISION/MISSION ---------- */
+  .reveal h2{
+     font-size:clamp(37px, 2vw, 50px);
+    line-height:1.3;
+    max-width:920px;
+  }
+  .vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-on-ink);border:1px solid var(--line-on-ink);}
+  .vm-card{background:var(--ink);padding:44px;}
+  .vm-card h3{font-size:14px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:18px;}
+  .vm-card p{
+  font-family:var(--font-body);font-style:italic;
+  font-size:clamp(10px,2vw,18px);
+    /* font-size: 13px; */
+  line-height:1.5;}
+  @media (max-width:760px){.vm-grid{grid-template-columns:1fr;}}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line-on-paper);border:1px solid var(--line-on-paper);}
+  .service-cell{background:var(--paper);padding:30px 26px;transition:background .25s ease;min-height:130px;display:flex;flex-direction:column;justify-content:space-between;}
+  .service-cell:hover{background:var(--paper-2);}
+  .service-cell .num{font-family:var(--font-mono);font-size:11px;color:#A8151E;}
+  .service-cell p{font-family:var(--font-display);font-size:18px;margin-top:14px;line-height:1.3;}
+  @media (max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
+
+  /* ---------- SHOWS ---------- */
+  .shows{display:flex;flex-direction:column;gap:1px;background:var(--line-on-ink);border:1px solid var(--line-on-ink);}
+  .show-card{
+    background:var(--ink-2);padding:48px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;
+  }
+  .show-card .show-visual{
+    aspect-ratio:16/10;background:linear-gradient(150deg,#1B1F29,#0A0C10);position:relative;overflow:hidden;
+    border:1px solid var(--line-on-ink);
+  }
+  .show-card .show-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 25%, rgba(201,162,39,0.22), transparent 55%);}
+  .show-card .show-visual .play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:56px;height:56px;border-radius:50%;border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .show-card .show-visual .play svg{width:16px;height:16px;fill:var(--gold);margin-left:2px;}
+  .show-visual{position:relative;}
+.show-visual .play{cursor:pointer;z-index:2;background:rgba(10,10,10,0.35);backdrop-filter:blur(2px);transition:opacity .3s ease, background .2s ease;border:1px solid var(--gold);}
+.show-visual .play:hover{background:rgba(214,32,43,0.25);}
+.show-visual .play.is-playing{opacity:0;pointer-events:none;}
+.show-visual:hover .play.is-playing{opacity:1;pointer-events:auto;}
+.show-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease;}
+.show-video.visible{opacity:1;}
+  .show-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);}
+  .show-card h3{font-size:clamp(24px,2.6vw,34px);margin:14px 0 12px;}
+  .show-card p{color:var(--text-on-ink-muted);font-size:15px;line-height:1.7;max-width:480px;}
+  .platforms{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+  .platform-pill{
+    font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--line-on-ink);padding:6px 12px;color:var(--text-on-ink-muted);
+  }
+  .show-socials{display:flex;gap:14px;margin-top:24px;}
+  .show-socials a{
+    width:36px;height:36px;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .show-socials a svg{width:16px;height:16px;fill:var(--text-on-ink-muted);transition:fill .2s ease;}
+  .show-socials a:hover{border-color:var(--gold);background:rgba(201,162,39,0.08);}
+  .show-socials a:hover svg{fill:var(--gold);}
+  @media (max-width:800px){.show-card{grid-template-columns:1fr;}}
+
+  /* ---------- MOMENTS SLIDESHOW ---------- */
+  /* .carousel/.carousel-track/.clip-card/.carousel-nav */
+
+.carousel-viewport{overflow:hidden;}
+.carousel-track{display:flex;gap:18px;width:max-content;padding:0 28px;animation:marqueeSlide 45s linear infinite;}
+.carousel-viewport:hover .carousel-track{animation-play-state:paused;}
+@keyframes marqueeSlide{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+.clip-card{
+  flex:0 0 auto;width:330px;aspect-ratio:9/16;
+  position:relative;overflow:hidden;background:var(--ink-2);border:1px solid var(--line-on-ink);
+}
+@media (max-width:900px){ .clip-card{width:260px;} }
+@media (max-width:600px){ .clip-card{width:220px;} }
+.clip-card .clip-bg{position:absolute;inset:0;background:linear-gradient(155deg,#1B1F29 0%,#0A0C10 60%,#12151C 100%);}
+.clip-card .clip-glow{position:absolute;inset:0;background:radial-gradient(circle at 70% 20%, rgba(214,32,43,0.20), transparent 55%);}
+.clip-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
+.clip-placeholder .reel-icon{width:38px;height:38px;opacity:0.5;}
+.clip-placeholder .reel-icon circle{stroke:var(--text-on-ink-muted);stroke-width:1.4;fill:none;}
+.clip-placeholder .reel-icon .hub{fill:var(--text-on-ink-muted);}
+.clip-placeholder .swap-label{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,241,238,0.4);border:1px solid var(--line-on-ink);padding:5px 10px;}
+video.clip-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.clip-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;background:linear-gradient(180deg, transparent 55%, rgba(10,12,16,0.8) 100%);}
+.clip-caption{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--text-on-ink);line-height:1.5;}
+.clip-caption .k{color:var(--gold-2);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+
+
+  /* ---------- HOW WE WORK ---------- */
+  .hww{display:grid;grid-template-columns:repeat(3,1fr);gap:44px;}
+  .hww-item .eyebrow{margin-bottom:18px;}
+  .hww-item h3{font-size:26px;margin-bottom:12px;}
+  .hww-item p{color:var(--text-on-paper-muted);font-size:15px;line-height:1.7;}
+  @media (max-width:800px){.hww{grid-template-columns:1fr;gap:40px;}}
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--ink);position:relative;overflow:hidden;
+  }
+  .contact::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,162,39,0.10), transparent 60%);
+  }
+  .contact-inner{position:relative;text-align:center;max-width:760px;margin:0 auto;}
+  .contact h2{font-size:clamp(32px,5vw,58px);margin:20px 0 26px;}
+  .contact p{color:var(--text-on-ink-muted);font-size:16px;max-width:520px;margin:0 auto 40px;}
+  .email-link{
+    font-family:var(--font-display);font-size:clamp(18px,3vw,28px);color:var(--gold);text-transform:lowercase;
+    border-bottom:1px solid var(--gold);padding-bottom:6px;display:inline-block;transition:color .2s ease, border-color .2s ease;
+  }
+  .email-link:hover{color:var(--gold-2);border-color:var(--gold-2);}
+  .contact-socials{display:flex;justify-content:center;gap:16px;margin-top:48px;flex-wrap:wrap;}
+  .contact-socials a{
+    width:46px;height:46px;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .contact-socials a svg{width:18px;height:18px;fill:var(--text-on-ink-muted);transition:fill .2s ease;}
+  .contact-socials a:hover{border-color:var(--gold);background:rgba(201,162,39,0.08);}
+  .contact-socials a:hover svg{fill:var(--gold);}
+  .contact-note{font-family:var(--font-mono);font-size:11px;color:var(--text-on-ink-muted);margin-top:20px;letter-spacing:.04em;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line-on-ink);padding:50px 0 34px;}
+  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:36px;border-bottom:1px solid var(--line-on-ink);margin-bottom:26px;}
+  .footer-cols{display:flex;gap:60px;flex-wrap:wrap;}
+  .footer-col h4{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:16px;}
+  .footer-col a, .footer-col span{display:block;font-size:13.5px;color:var(--text-on-ink-muted);margin-bottom:10px;}
+  .footer-col a:hover{color:var(--text-on-ink);}
+  .footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--font-mono);font-size:11px;color:var(--text-on-ink-muted);letter-spacing:.04em;}
+
+  /* placeholder tag used on hero/clip areas when no real media is wired in yet */
+  .media-todo{
+    position:absolute;bottom:14px;left:14px;z-index:5;
+    font-family:var(--font-mono);font-size:9.5px;letter-spacing:.05em;color:rgba(236,233,225,0.45);
+    border:1px dashed rgba(236,233,225,0.25);padding:4px 8px;pointer-events:none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="siteNav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">BRIDGE<span class="mark">.</span><span class="sub">Global Productions</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#shows">Our Shows</a>
+      <a href="#moments">Moments</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn solid">Get In Touch</a>
+    </div>
+    <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#shows" class="mobile-link">Our Shows</a>
+  <a href="#moments" class="mobile-link">Moments</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn solid">Get In Touch</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<div id="top"></div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <!-- To go live: set data-src on the <source> below to your hosted hero-loop.mp4 (short, muted, looping footage). Falls back to the gold gradient above until a video loads. -->
+  <video class="hero-video" id="heroVideo" muted loop playsinline autoplay preload="none">
+    <source data-src="https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/IMG2.mp4" type="video/mp4">
+  </video>
+  <div class="hero-sweep" id="heroSweep"></div>
+  <div class="hero-grain"></div>
+  <div class="film-perf top" id="filmPerfTop"></div>
+  <div class="film-perf bottom" id="filmPerfBottom"></div>
+  <div class="reel-badge" id="reelBadge"><span class="dot"></span>Reel preview — awaiting footage</div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow hero-tag">AFRICAN STORYTELLING · GLOBAL STAGE</div>
+    <h1>We <em>Bridge</em><br>The Gap.</h1>
+    <p class="hero-sub">A premium media and production company creating visibility for the people, brands and ideas shaping our world from original shows to red-carpet coverage and brand films.</p>
+    <div class="hero-actions">
+      <a href="#moments" class="btn solid">Watch Our Work</a>
+      <a href="#contact" class="btn">Start A Project</a>
+    </div>
+    <div class="hero-foot">
+      <div class="hero-scroll">
+        <span class="dot"></span>
+        Scroll to explore</div>
+      <div class="hero-loc">Lagos, Nigeria — Building for the world</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SIGNATURE BRIDGE ARC ================= -->
+<div class="bridge-arc" id="bridgeArc">
+  <svg viewBox="0 0 1100 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path class="arc-path" d="M40 190 C 300 190, 340 40, 550 40 C 760 40, 800 190, 1060 190" />
+    <circle class="node" cx="40" cy="190" r="5"/>
+    <circle class="node" cx="1060" cy="190" r="5"/>
+    <text x="550" y="118" text-anchor="middle">We Bridge The Gap</text>
+  </svg>
+</div>
+
+<!-- ================= FOUNDER'S NOTE ================= -->
+<section class="on-paper" id="about">
+  <div class="wrap founder reveal">
+    <div>
+      <div class="eyebrow">Founder's Note</div>
+      <p class="founder-quote" style="margin-top:22px;">
+        “I have always believed that <span>stories change everything.</span> They shape culture, influence perception, create opportunities, move economies, and outlive generations. Yet too many important stories never reach the audiences waiting for them. That is the problem Bridge Global Productions was built to solve.”
+      </p>
+      <div class="founder-meta">KANYINSOLA OLUKOYA — FOUNDER &amp; EXECUTIVE PRODUCER</div>
+    </div>
+    <div class="founder-portrait">
+      <div class="media-todo"><img src="KANYIN1-Picsart-AiImageEnhancer.jpg" alt="" srcset=""></div>
+      <div class="cap">Founder &amp; Executive Producer</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISION / MISSION / VALUES ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Why We Exist</div>
+      <h2>Africa's stories, told at <br>a world-class standard.</h2>
+    </div>
+    <div class="vm-grid reveal">
+      <div class="vm-card">
+        <h3>Vision</h3>
+        <p>To become Africa's leading global media  &amp;
+           production company, connecting stories, talent
+           &amp; brands to audiences across the world through world-class storytelling.</p>
+      </div>
+      <div class="vm-card">
+        <h3>Mission</h3>
+        <p>To create premium media and storytelling experiences that bridge the gap between important stories and global audiences.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ticker-wrap">
+    <div class="ticker" id="valuesTicker">
+      <span class="gold">Excellence</span><span>Integrity</span><span>Curiosity</span><span>Ownership</span><span>Humanity</span><span class="gold">Global Thinking</span><span>Hard Work</span><span>Faith</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="on-paper" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What We Do</div>
+      <h2>We produce. We cover.<br>We amplify. We connect.</h2>
+    </div>
+    <div class="services-grid reveal" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- ================= SHOWS ================= -->
+
+<section id="shows">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Current Properties</div>
+      <h2>Original shows built under Bridge.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="shows reveal">
+      <div class="show-card">
+        <div class="show-visual" data-video-src="https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/spillsandthrillsTrim1.mp4">
+          <video class="show-video" loop playsinline preload="none"></video>
+          <button class="play" aria-label="Play Spills &amp; Thrills preview">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="show-tag">Original SHOW</div>
+          <h3>Spills &amp; Thrills Show</h3>
+          <p>A culture-driven talk show exploring entertainment, culture, current conversations and the people shaping them.</p>
+          <div class="platforms">
+            <span class="platform-pill">Radio</span>
+            <span class="platform-pill">YouTube</span>
+            <span class="platform-pill">Podcast Platforms</span>
+            <span class="platform-pill">Social Media</span>
+          </div>
+          <div class="show-socials">
+            <a href="https://www.instagram.com/spillsandthrillsshow?igsh=eG03dGZxemZ1NnRu" target="_blank" rel="noopener" aria-label="Spills and Thrills on Instagram">${ICON_INSTAGRAM}</a>
+            <a href="https://www.tiktok.com/@spillsandthrillss?_r=1&_t=ZS-98rXEvQFYhE" target="_blank" rel="noopener" aria-label="Spills and Thrills on TikTok">${ICON_TIKTOK}</a>
+            <a href="https://www.youtube.com/@Spillsandthrillsshow" target="_blank" rel="noopener" aria-label="Spills and Thrills on YouTube">${ICON_YOUTUBE}</a>
+          </div>
+        </div>
+      </div>
+      <div class="show-card">
+        <div class="show-visual" data-video-src="https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/realLifeWithAyoAdesanyaTrim.mp4">
+          <video class="show-video" loop playsinline preload="none"></video>
+          <button class="play" aria-label="Play Real Life with Ayo Adesanya preview">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div>
+          <div class="show-tag">Original SHOW</div>
+          <h3>Real Life with Ayo Adesanya</h3>
+          <p>Long-form conversations exploring life, legacy, career and personal journeys through authentic storytelling, hosted by Ayo Adesanya.</p>
+          <div class="platforms">
+            <span class="platform-pill">YouTube</span>
+            <span class="platform-pill">Podcast Platforms</span>
+            <span class="platform-pill">Social Media</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= MOMENTS SLIDESHOW ================= -->
+<section class="on-paper" id="moments">
+  <div class="wrap">
+    <div class="moments-head reveal">
+      <div>
+        <div class="eyebrow">Moments</div>
+        <h2 style="margin-top:16px;margin-bottom:74px;">clips from shoots, events coverage,<br>the Spills &amp; Thrills studio.</h2>
+      </div>
+      <!-- <p style="border: 3px solid red; max-width:340px;color:var(--text-on-paper-muted);font-size:14px;line-height:1.7;">
+        Short clips from our shoots, event coverage and the Spills &amp; Thrills studio.
+      </p> -->
+    </div>
+  </div>
+  <div class="carousel-viewport" id="carouselViewport">
+    <div class="carousel-track" id="carouselTrack"></div>
+  </div>
+</section>
+
+<!-- ================= HOW WE WORK ================= -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">How We Work</div>
+      <h2>Three principles guide<br>every project.</h2>
+    </div>
+    <div class="hww reveal">
+      <div class="hww-item">
+        <div class="eyebrow">Clarity</div>
+        <h3>Understand the story</h3>
+        <p>We start beneath the surface, understanding the story before a single frame is shot.</p>
+      </div>
+      <div class="hww-item">
+        <div class="eyebrow">Craft</div>
+        <h3>Execute at world-class standard</h3>
+        <p>Premium editorial thinking and production quality, from pre-production to final cut.</p>
+      </div>
+      <div class="hww-item">
+        <div class="eyebrow">Connection</div>
+        <h3>Resonate past the credits</h3>
+        <p>Content built to move people long after the story ends, and to move the culture forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap contact-inner reveal">
+    <div class="eyebrow" style="justify-content:center;">Let's Build Something Worth Crossing</div>
+    <h2>Have a story worth telling?</h2>
+    <p>Whether it's a brand film, a documentary, live coverage or an original show, tell us where you need visibility.</p>
+    <a href="mailto:bridgeglobalproductions@gmail.com" class="email-link">bridgeglobalproductions@gmail.com</a>
+    <div class="contact-socials">
+      <a href="https://www.instagram.com/bridgeglobalproductions?igsh=eDA5d2h6OGVnYWYz" target="_blank" rel="noopener" aria-label="Bridge Global Productions on Instagram">${ICON_INSTAGRAM}</a>
+      <a href="https://www.tiktok.com/@bridge_global?_r=1&_t=ZS-98rWxJMYRC4" target="_blank" rel="noopener" aria-label="Bridge Global Productions on TikTok">${ICON_TIKTOK}</a>
+      <a href="https://www.linkedin.com/company/bridge-global-productions/" target="_blank" rel="noopener" aria-label="Bridge Global Productions on LinkedIn">${ICON_LINKEDIN}</a>
+    </div>
+    <div class="contact-note"> DMs on Instagram work too.</div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div style="max-width:280px;">
+        <a href="#top" class="logo">BRIDGE<span class="mark">.</span><span class="sub">Global Productions</span></a>
+        <p style="margin-top:14px;color:var(--text-on-ink-muted);font-size:13.5px;line-height:1.7;">We Bridge The Gap — between stories and audiences, culture and commerce, Africa and the world.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Sitemap</h4>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#shows">Our Shows</a>
+          <a href="#moments">Moments</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Bridge Global</h4>
+          <a href="https://www.instagram.com/bridgeglobalproductions?igsh=eDA5d2h6OGVnYWYz" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@bridge_global?_r=1&_t=ZS-98rWxJMYRC4" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.linkedin.com/company/bridge-global-productions/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+        <div class="footer-col">
+          <h4>Spills &amp; Thrills</h4>
+          <a href="https://www.instagram.com/spillsandthrillsshow?igsh=eG03dGZxemZ1NnRu" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@spillsandthrillss?_r=1&_t=ZS-98rXEvQFYhE" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.youtube.com/@Spillsandthrillsshow" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Bridge Global Productions. All rights reserved.</span>
+      <span>Lagos, Nigeria</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------- Real social icon SVGs (Instagram, TikTok, LinkedIn, YouTube glyphs) ----------
+const ICON_INSTAGRAM = `<svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.42.56.21.96.48 1.38.9.42.42.68.81.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.17-1.06.37-2.23.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.43-.37-1.06-.42-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.17 1.06-.37 2.23-.42C8.42 2.17 8.8 2.16 12 2.16zm0 1.98c-3.15 0-3.5.01-4.74.07-1.02.05-1.58.22-1.95.36-.49.19-.84.42-1.21.79-.37.37-.6.72-.79 1.21-.14.37-.31.93-.36 1.95-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.02.22 1.58.36 1.95.19.49.42.84.79 1.21.37.37.72.6 1.21.79.37.14.93.31 1.95.36 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.02-.05 1.58-.22 1.95-.36.49-.19.84-.42 1.21-.79.37-.37.6-.72.79-1.21.14-.37.31-.93.36-1.95.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.02-.22-1.58-.36-1.95-.19-.49-.42-.84-.79-1.21-.37-.37-.72-.6-1.21-.79-.37-.14-.93-.31-1.95-.36-1.24-.06-1.59-.07-4.74-.07zm0 3.56a4.3 4.3 0 110 8.6 4.3 4.3 0 010-8.6zm0 1.98a2.32 2.32 0 100 4.64 2.32 2.32 0 000-4.64zm5.48-2.2a1.01 1.01 0 11-2.02 0 1.01 1.01 0 012.02 0z"/></svg>`;
+const ICON_TIKTOK = `<svg viewBox="0 0 24 24"><path d="M16.6 3h-3.2v12.3c0 1.5-1.2 2.7-2.7 2.7-1.5 0-2.7-1.2-2.7-2.7 0-1.4 1.1-2.6 2.5-2.7v-3.2c-3.2.1-5.7 2.7-5.7 5.9 0 3.3 2.7 5.9 5.9 5.9 3.3 0 5.9-2.7 5.9-5.9V9.2c1.2.9 2.7 1.4 4.3 1.4V7.4c-1.8 0-3.3-1-4.1-2.4-.4-.7-.6-1.4-.6-2z"/></svg>`;
+const ICON_LINKEDIN = `<svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>`;
+const ICON_YOUTUBE = `<svg viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`;
+
+document.querySelectorAll('a[aria-label*="Instagram"]').forEach(el => el.innerHTML = ICON_INSTAGRAM);
+document.querySelectorAll('a[aria-label*="TikTok"]').forEach(el => el.innerHTML = ICON_TIKTOK);
+document.querySelectorAll('a[aria-label*="LinkedIn"]').forEach(el => el.innerHTML = ICON_LINKEDIN);
+document.querySelectorAll('a[aria-label*="YouTube"]').forEach(el => el.innerHTML = ICON_YOUTUBE);
+
+// ---------- Film perforation strips (hero) ----------
+function fillPerf(el, count){ el.innerHTML = Array.from({length:count}).map(()=>'<span></span>').join(''); }
+fillPerf(document.getElementById('filmPerfTop'), 40);
+fillPerf(document.getElementById('filmPerfBottom'), 40);
+
+// ---------- Hide reel badge once real hero footage is playing ----------
+function hideReelBadgeIfLive(){
+  const badge = document.getElementById('reelBadge');
+  const sweep = document.getElementById('heroSweep');
+  if (document.getElementById('heroVideo').classList.contains('visible')) {
+    if (badge) badge.style.display = 'none';
+    if (sweep) sweep.style.display = 'none';
+  }
+}
+
+// ---------- Show cover videos (click to preview) ----------
+// ---------- Show cover videos (click to preview) ----------
+document.querySelectorAll('.show-visual[data-video-src]').forEach(visual => {
+  const src = visual.getAttribute('data-video-src');
+  const video = visual.querySelector('.show-video');
+  const playBtn = visual.querySelector('.play');
+  const todo = visual.querySelector('.media-todo');
+  if (!video || !playBtn) return; // skip cleanly instead of throwing if markup is incomplete
+  video.addEventListener('loadeddata', () => {
+    video.classList.add('visible');
+    if (todo) todo.style.display = 'none';
+  });
+  video.addEventListener('error', () => { playBtn.disabled = true; });
+  playBtn.addEventListener('click', () => {
+    if (video.paused) {
+      if (!video.getAttribute('src')) { video.src = src; video.load(); }
+      video.play().catch(()=>{});
+      playBtn.classList.add('is-playing');
+    } else {
+      video.pause();
+      playBtn.classList.remove('is-playing');
+    }
+  });
+});
+
+
+// ---------- Nav scroll state ----------
+const nav = document.getElementById('siteNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// ---------- Mobile menu ----------
+const burger = document.getElementById('burgerBtn');
+const panel = document.getElementById('mobilePanel');
+burger.addEventListener('click', () => {
+  const open = panel.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+document.querySelectorAll('.mobile-panel a').forEach(a => a.addEventListener('click', () => {
+  panel.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+}));
+
+// ---------- Reveal on scroll ----------
+const revealEls = document.querySelectorAll('.reveal, #bridgeArc');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in-view');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+revealEls.forEach(el => io.observe(el));
+
+// ---------- Hero video: try to load real footage, else keep gradient fallback ----------
+// To go live, just point the <source data-src="..."> above at your hosted mp4 — this script
+// will pick it up automatically and cross-fade it in over the gradient.
+(function initHeroVideo(){
+  const video = document.getElementById('heroVideo');
+  const source = video.querySelector('source');
+  const realSrc = source.getAttribute('data-src');
+  if (!realSrc) return;
+  source.src = realSrc;
+  video.addEventListener('loadeddata', () => { video.classList.add('visible'); hideReelBadgeIfLive(); });
+  video.addEventListener('error', () => { /* no file found yet — gradient fallback stays visible */ });
+  video.load();
+  video.play().catch(()=>{});
+})();
+
+// ---------- Services grid (from the brand book) ----------
+const SERVICES = [
+  "Original Shows & Podcasts","Brand Films & Campaigns","Short & Feature Film Production",
+  "Documentary Production","Broadcast Production","Red Carpet & Event Coverage",
+  "Movie Premieres & Entertainment Coverage","Corporate, Social & Political Event Coverage",
+  "International Media Coverage","Live Production Services","Interviews & Editorial Features",
+  "Social-First Content Production","Creative Direction & Executive Production","Media Strategy & Storytelling Consulting",
+  "Greatness"
+];
+const grid = document.getElementById('servicesGrid');
+SERVICES.forEach((s, i) => {
+  const cell = document.createElement('div');
+  cell.className = 'service-cell';
+  cell.innerHTML = `<div class="num">${String(i+1).padStart(2,'0')}</div><p>${s}</p>`;
+  grid.appendChild(cell);
+});
+
+// ---------- Moments carousel ----------
+// Each entry maps to a real clip once you have one. Set "src" to a hosted mp4 URL and it
+// will autoplay muted in-view; until then it shows a labeled placeholder card.
+// ---------- Moments carousel ----------
+// ---------- Moments slideshow ----------
+// ---------- Moments conveyor ----------
+const CLIPS = [
+  { label: "Spills & Thrills", caption: "Studio taping — Behind The Scenes", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/IMG1.mp4" },
+  { label: "Event Coverage", caption: "Red carpet — premiere night", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/bbnStarTrim.mp4" },
+  { label: "Behind The Scenes", caption: "On set with the production crew", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/PoweroilAd.mp4" },
+  { label: "Interviews", caption: "Editorial feature — extended cut", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/KamoStateTrim.mp4" },
+  { label: "Live Production", caption: "Corporate event coverage", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/AyoAde-intro.mp4" },
+];
+const track = document.getElementById('carouselTrack');
+if (track) {
+  function buildCard(clip) {
+    const card = document.createElement('div');
+    card.className = 'clip-card';
+    card.innerHTML = `
+      <div class="clip-bg"></div>
+      <div class="clip-glow"></div>
+      <video class="clip-video" muted loop playsinline preload="none"><source src="${clip.src}" type="video/mp4"></video>
+      <div class="clip-placeholder" style="display:none;">
+        <svg class="reel-icon" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17"/><circle class="hub" cx="20" cy="20" r="2.5"/><circle class="hub" cx="20" cy="9" r="2"/><circle class="hub" cx="30" cy="26" r="2"/><circle class="hub" cx="10" cy="26" r="2"/></svg>
+        <div class="swap-label">Couldn't load: ${clip.src.split('/').pop()}</div>
+      </div>
+      <div class="clip-overlay">
+        <div class="clip-caption"><span class="k">${clip.label}</span>${clip.caption}</div>
+      </div>
+    `;
+    const v = card.querySelector('video');
+    const placeholder = card.querySelector('.clip-placeholder');
+    v.addEventListener('error', () => {
+      v.style.display = 'none';
+      placeholder.style.display = 'flex';
+    });
+    v.play().catch(()=>{});
+    return card;
+  }
+
+  // duplicate the set once so the loop wraps seamlessly at -50%
+  [...CLIPS, ...CLIPS].forEach(clip => track.appendChild(buildCard(clip)));
+
+  // pause the conveyor (animation + all videos) when the section isn't on screen
+  const momentsSection = document.getElementById('moments');
+  const momentsIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      track.style.animationPlayState = e.isIntersecting ? 'running' : 'paused';
+      track.querySelectorAll('video').forEach(v => {
+        if (e.isIntersecting) v.play().catch(()=>{});
+        else v.pause();
+      });
+    });
+  }, { threshold: 0.1 });
+  if (momentsSection) momentsIo.observe(momentsSection);
+}
+
+
+
+
+// ---------- Ticker duplicate for seamless loop ----------
+const ticker = document.getElementById('valuesTicker');
+ticker.innerHTML += ticker.innerHTML;
+
+// ---------- Footer year ----------
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
