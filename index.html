@@ -386,7 +386,29 @@
   .platforms{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
   .platform-pill{
     font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
-    border:1px solid var(--line-on-ink);padding:6px 12px;color:var(--text-on-ink-muted);
+    border:1px solid var(--line-on-ink);padding:7px 13px;color:var(--text-on-ink-muted);
+    background:rgba(255,255,255,0.02);
+    display:inline-flex;align-items:center;gap:7px;
+    text-decoration:none;cursor:pointer;
+    transition:all .25s ease;
+    border-radius:2px;
+  }
+  .platform-pill:hover{
+    border-color:var(--gold);
+    color:#fff;
+    background:rgba(214,32,43,0.15);
+    transform:translateY(-1px);
+  }
+  .platform-pill svg{width:13px;height:13px;fill:currentColor;flex-shrink:0;}
+  .platform-pill.pill-primary{
+    border-color:rgba(214,32,43,0.6);
+    color:var(--text-on-ink);
+    background:rgba(214,32,43,0.1);
+  }
+  .platform-pill.pill-primary:hover{
+    background:var(--gold);
+    color:#fff;
+    border-color:var(--gold);
   }
   .show-socials{display:flex;gap:14px;margin-top:24px;}
   .show-socials a{
@@ -397,6 +419,70 @@
   .show-socials a:hover{border-color:var(--gold);background:rgba(201,162,39,0.08);}
   .show-socials a:hover svg{fill:var(--gold);}
   @media (max-width:800px){.show-card{grid-template-columns:1fr;}}
+
+  /* ---------- PLATFORM SELECTOR MODAL ---------- */
+  .platform-modal{
+    position:fixed;inset:0;z-index:999;
+    display:none;align-items:center;justify-content:center;padding:20px;
+  }
+  .platform-modal.is-open{display:flex;}
+  .modal-backdrop{
+    position:absolute;inset:0;
+    background:rgba(10,12,16,0.85);backdrop-filter:blur(10px);
+  }
+  .modal-dialog{
+    position:relative;z-index:1;background:var(--ink-2);
+    border:1px solid var(--line-on-ink);
+    border-top:2px solid var(--gold);
+    max-width:540px;width:100%;padding:36px 32px;
+    box-shadow:0 24px 60px rgba(0,0,0,0.8);
+    animation:modalPop .25s ease-out;
+  }
+  @keyframes modalPop{
+    from{opacity:0;transform:scale(0.96) translateY(10px);}
+    to{opacity:1;transform:scale(1) translateY(0);}
+  }
+  .modal-close{
+    position:absolute;top:18px;right:20px;
+    background:none;border:none;color:var(--text-on-ink-muted);
+    font-size:28px;line-height:1;cursor:pointer;padding:4px 8px;
+    transition:color .2s ease;
+  }
+  .modal-close:hover{color:var(--gold);}
+  .modal-head{margin-bottom:24px;}
+  .modal-head h3{font-size:24px;margin-top:8px;}
+  .modal-head p{color:var(--text-on-ink-muted);font-size:13.5px;margin-top:6px;line-height:1.5;}
+  .modal-links{display:flex;flex-direction:column;gap:10px;}
+  .modal-item{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:14px 18px;background:rgba(255,255,255,0.03);
+    border:1px solid var(--line-on-ink);
+    text-decoration:none;color:var(--text-on-ink);
+    transition:all .2s ease;
+  }
+  .modal-item:hover{
+    border-color:var(--gold);
+    background:rgba(214,32,43,0.1);
+    transform:translateX(3px);
+  }
+  .modal-item-left{display:flex;align-items:center;gap:14px;}
+  .modal-item-icon{width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .modal-item-icon svg{width:22px;height:22px;}
+  .modal-item-name{font-family:var(--font-display);font-size:14px;letter-spacing:.02em;}
+  .modal-item-desc{font-family:var(--font-mono);font-size:11px;color:var(--text-on-ink-muted);margin-top:2px;}
+  .modal-badge{
+    font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    padding:4px 9px;border:1px solid var(--line-on-ink);color:var(--text-on-ink-muted);
+    white-space:nowrap;
+  }
+  .modal-item:hover .modal-badge{
+    border-color:var(--gold);color:var(--gold);
+  }
+  .radio-info-box{
+    padding:16px;background:rgba(214,32,43,0.08);border:1px dashed var(--gold);
+    margin-top:14px;font-size:13px;line-height:1.6;
+  }
+  .radio-info-box strong{color:var(--gold);display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;margin-bottom:4px;}
 
   /* ---------- MOMENTS SLIDESHOW ---------- */
   /* .carousel/.carousel-track/.clip-card/.carousel-nav */
@@ -627,10 +713,22 @@ video.clip-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cov
           <h3>Spills &amp; Thrills Show</h3>
           <p>A culture-driven talk show exploring entertainment, culture, current conversations and the people shaping them.</p>
           <div class="platforms">
-            <span class="platform-pill">Radio</span>
-            <span class="platform-pill">YouTube</span>
-            <span class="platform-pill">Podcast Platforms</span>
-            <span class="platform-pill">Social Media</span>
+            <a href="https://youtube.com/@spillsandthrillsshow?si=_OMmGOXxq6NMUhGN" target="_blank" rel="noopener" class="platform-pill pill-primary">
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>
+              YouTube
+            </a>
+            <a href="https://open.spotify.com/show/6O91NC6Xg0AZhBM8afXQ64" target="_blank" rel="noopener" class="platform-pill">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424a.625.625 0 01-.86.208c-2.355-1.439-5.32-1.765-8.812-.967a.626.626 0 01-.28-1.22c3.818-.873 7.098-.506 9.744 1.119a.624.624 0 01.208.86zm1.224-2.724a.782.782 0 01-1.077.257c-2.696-1.657-6.806-2.136-9.995-1.168a.782.782 0 11-.453-1.498c3.64-1.106 8.188-.573 11.268 1.332a.782.782 0 01.257 1.077zm.105-2.835C14.693 9.07 9.07 8.887 5.813 9.876a.937.937 0 11-.546-1.792c3.743-1.137 9.94-.925 13.864 1.405a.938.938 0 01-1.216 1.376z"/></svg>
+              Spotify
+            </a>
+            <button type="button" class="platform-pill" data-modal="spills-podcasts">
+              <svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 00-4 4v7a4 4 0 008 0V5a4 4 0 00-4-4zm6 11a6 6 0 01-12 0H4a8 8 0 007 7.93V23h2v-3.07A8 8 0 0020 12h-2z"/></svg>
+              Podcast Platforms
+            </button>
+            <a href="https://www.radio-nigeria.com/city-1051-fm" target="_blank" rel="noopener" class="platform-pill">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+              Radio (City 105.1 FM)
+            </a>
           </div>
           <div class="show-socials">
             <a href="https://www.instagram.com/spillsandthrillsshow?igsh=eG03dGZxemZ1NnRu" target="_blank" rel="noopener" aria-label="Spills and Thrills on Instagram">${ICON_INSTAGRAM}</a>
@@ -651,9 +749,17 @@ video.clip-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cov
           <h3>Real Life with Ayo Adesanya</h3>
           <p>Long-form conversations exploring life, legacy, career and personal journeys through authentic storytelling, hosted by Ayo Adesanya.</p>
           <div class="platforms">
-            <span class="platform-pill">YouTube</span>
-            <span class="platform-pill">Podcast Platforms</span>
-            <span class="platform-pill">Social Media</span>
+            <a href="https://youtube.com/@ayoadesanyatv?si=ZZZiXDjlXctmvzvV" target="_blank" rel="noopener" class="platform-pill pill-primary">
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>
+              YouTube
+            </a>
+            <button type="button" class="platform-pill" data-modal="ayo-podcasts">
+              <svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 00-4 4v7a4 4 0 008 0V5a4 4 0 00-4-4zm6 11a6 6 0 01-12 0H4a8 8 0 007 7.93V23h2v-3.07A8 8 0 0020 12h-2z"/></svg>
+              Podcast Platforms
+            </button>
+          </div>
+          <div class="show-socials">
+            <a href="https://youtube.com/@ayoadesanyatv?si=ZZZiXDjlXctmvzvV" target="_blank" rel="noopener" aria-label="Ayo Adesanya on YouTube">${ICON_YOUTUBE}</a>
           </div>
         </div>
       </div>
@@ -883,11 +989,12 @@ SERVICES.forEach((s, i) => {
 // ---------- Moments slideshow ----------
 // ---------- Moments conveyor ----------
 const CLIPS = [
-  { label: "Spills & Thrills", caption: "Studio taping — Behind The Scenes", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/IMG1.mp4" },
-  { label: "Event Coverage", caption: "Red carpet — premiere night", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/bbnStarTrim.mp4" },
-  { label: "Behind The Scenes", caption: "On set with the production crew", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/PoweroilAd.mp4" },
-  { label: "Interviews", caption: "Editorial feature — extended cut", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/KamoStateTrim.mp4" },
-  { label: "Live Production", caption: "Corporate event coverage", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/AyoAde-intro.mp4" },
+  { label: "Spills & Thrills", caption: "Studio taping — Behind The Scenes", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/L.S.-.Trim.mp4" },
+  { label: "Event Coverage", caption: "Red carpet — premiere night", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/poweroil.-.Trim.mp4" },
+  { label: "Behind The Scenes", caption: "On set with the production crew", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/Locks.Solutions.-.Trim.-.Trim.-.Trim.mp4" },
+  { label: "Live Production", caption: "Event coverage", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/black.market.MOV.mp4" },
+  { label: "Interviews", caption: "Editorial feature — extended cut", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/Annuva.Homes.-.Trim.mp4" },
+    { label: "Event Hosting", caption: "Event hosting services", src: "https://github.com/DavidAjayiA/BRIDGE-GLOBAL-PRODUCTION/releases/download/assets-v1/THE.GLOBAL.MEDIA.GIRL.x.POWER.OIL.-.Trim.-.Trim.-.Trim.mp4" },
 ];
 const track = document.getElementById('carouselTrack');
 if (track) {
@@ -942,6 +1049,178 @@ ticker.innerHTML += ticker.innerHTML;
 
 // ---------- Footer year ----------
 document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- ================= PLATFORM SELECTOR MODAL ================= -->
+<div class="platform-modal" id="platformModal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-dialog">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+    <div class="modal-head">
+      <div class="eyebrow" id="modalEyebrow">LISTEN &amp; WATCH</div>
+      <h3 id="modalTitle">Spills &amp; Thrills Show</h3>
+      <p id="modalSubtitle">Choose your preferred streaming or broadcast platform:</p>
+    </div>
+    <div class="modal-links" id="modalLinks"></div>
+    <div id="modalExtra"></div>
+  </div>
+</div>
+
+<script>
+// ---------- Platform selector modal data & logic ----------
+const SHOW_MODAL_DATA = {
+  'spills-podcasts': {
+    eyebrow: 'ORIGINAL SHOW · STREAMING',
+    title: 'Spills & Thrills Show',
+    subtitle: 'Stream episodes anytime across your preferred podcast platform:',
+    links: [
+      {
+        name: 'Spotify',
+        desc: 'Listen on Spotify app & web player',
+        url: 'https://open.spotify.com/show/6O91NC6Xg0AZhBM8afXQ64',
+        badge: 'Listen',
+        icon: `<svg viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424a.625.625 0 01-.86.208c-2.355-1.439-5.32-1.765-8.812-.967a.626.626 0 01-.28-1.22c3.818-.873 7.098-.506 9.744 1.119a.624.624 0 01.208.86zm1.224-2.724a.782.782 0 01-1.077.257c-2.696-1.657-6.806-2.136-9.995-1.168a.782.782 0 11-.453-1.498c3.64-1.106 8.188-.573 11.268 1.332a.782.782 0 01.257 1.077zm.105-2.835C14.693 9.07 9.07 8.887 5.813 9.876a.937.937 0 11-.546-1.792c3.743-1.137 9.94-.925 13.864 1.405a.938.938 0 01-1.216 1.376z"/></svg>`
+      },
+      {
+        name: 'Apple Podcasts',
+        desc: 'Listen on Apple Podcasts',
+        url: 'https://podcasts.apple.com/us/podcast/spills-and-thrills-podcast/id1627831102',
+        badge: 'Listen',
+        icon: `<svg viewBox="0 0 24 24" fill="#B150E2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.7 13.6c-.3.4-.8.6-1.3.6s-1-.2-1.3-.6c-.2-.2-.3-.5-.3-.8 0-.6.4-1.1 1-1.3.2 0 .4-.1.6-.1s.4.1.6.1c.6.2 1 .7 1 1.3 0 .3-.1.6-.3.8zm1.9-2.7c-.5-.7-1.3-1.1-2.2-1.2-.4-.1-.8-.1-1.2 0-.9.1-1.7.5-2.2 1.2-.3.4-.8.4-1.1.1-.3-.3-.4-.8-.1-1.1.8-.9 1.9-1.5 3.1-1.7.6-.1 1.2-.1 1.8 0 1.2.2 2.3.8 3.1 1.7.3.3.3.8-.1 1.1-.3.3-.8.2-1.1-.1zm1.9-2.6c-.8-1.2-2.1-2-3.6-2.2-.7-.1-1.5-.1-2.2 0-1.5.2-2.8 1-3.6 2.2-.3.4-.8.5-1.2.2s-.5-.8-.2-1.2c1.1-1.5 2.7-2.5 4.6-2.7.9-.1 1.8-.1 2.7 0 1.9.2 3.5 1.2 4.6 2.7.3.4.2 1-.2 1.2-.4.3-.9.2-1.1-.2z"/></svg>`
+      },
+      {
+        name: 'Buzzsprout',
+        desc: 'Web player, full episode archives & show notes',
+        url: 'https://spillsandthrillsshow.buzzsprout.com',
+        badge: 'Web Player',
+        icon: `<svg viewBox="0 0 24 24" fill="#F0464F"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`
+      },
+      {
+        name: 'YouTube',
+        desc: 'Watch full video podcast episodes',
+        url: 'https://youtube.com/@spillsandthrillsshow?si=_OMmGOXxq6NMUhGN',
+        badge: 'Watch',
+        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
+      },
+      {
+        name: 'Radio (City 105.1 FM Lagos)',
+        desc: 'Listen to the live radio stream online',
+        url: 'https://www.radio-nigeria.com/city-1051-fm',
+        badge: 'Live Radio',
+        icon: `<svg viewBox="0 0 24 24" fill="#D6202B"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>`
+      },
+      {
+        name: 'RSS Feed',
+        desc: 'Direct audio podcast feed for any app',
+        url: 'https://feeds.buzzsprout.com/2592654.rss',
+        badge: 'RSS',
+        icon: `<svg viewBox="0 0 24 24" fill="#FFA500"><path d="M6.18 15.64a2.18 2.18 0 100 4.36 2.18 2.18 0 000-4.36zM4 4.44v3.52c6.64 0 12.04 5.4 12.04 12.04h3.52C19.56 11.4 12.6 4.44 4 4.44zm0 6.08v3.52a6.04 6.04 0 016.04 6.04h3.52c0-5.28-4.28-9.56-9.56-9.56z"/></svg>`
+      }
+    ],
+    extraHtml: `
+      <div class="radio-info-box">
+        <strong>RADIO BROADCAST SCHEDULE</strong>
+        Live on Radio (<strong>City 105.1 FM Lagos</strong>) every <strong>Saturday</strong>.<br>
+        New video & audio episodes drop every <strong>Thursday</strong> on YouTube & Podcast platforms.<br>
+        <a href="https://www.radio-nigeria.com/city-1051-fm" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;display:inline-block;margin-top:6px;">Listen to City 105.1 FM live online &rarr;</a>
+      </div>
+    `
+  },
+  'ayo-podcasts': {
+    eyebrow: 'ORIGINAL SHOW · CHANNELS',
+    title: 'Real Life with Ayo Adesanya',
+    subtitle: 'Stream, watch and follow conversations hosted by Ayo Adesanya:',
+    links: [
+      {
+        name: 'Ayo Adesanya TV on YouTube',
+        desc: 'Watch full episodes and interviews',
+        url: 'https://youtube.com/@ayoadesanyatv?si=ZZZiXDjlXctmvzvV',
+        badge: 'Watch Now',
+        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
+      },
+      {
+        name: 'Podcast Distribution',
+        desc: 'Audio episodes rolling out soon to Spotify & Apple Podcasts',
+        url: 'https://youtube.com/@ayoadesanyatv?si=ZZZiXDjlXctmvzvV',
+        badge: 'Coming Soon',
+        icon: `<svg viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424a.625.625 0 01-.86.208c-2.355-1.439-5.32-1.765-8.812-.967a.626.626 0 01-.28-1.22c3.818-.873 7.098-.506 9.744 1.119a.624.624 0 01.208.86zm1.224-2.724a.782.782 0 01-1.077.257c-2.696-1.657-6.806-2.136-9.995-1.168a.782.782 0 11-.453-1.498c3.64-1.106 8.188-.573 11.268 1.332a.782.782 0 01.257 1.077zm.105-2.835C14.693 9.07 9.07 8.887 5.813 9.876a.937.937 0 11-.546-1.792c3.743-1.137 9.94-.925 13.864 1.405a.938.938 0 01-1.216 1.376z"/></svg>`
+      }
+    ],
+    extraHtml: `
+      <div class="radio-info-box">
+        <strong>FULL CONVERSATIONS STREAMING NOW</strong>
+        All full episodes and exclusive interviews are streaming on <strong>Ayo Adesanya TV on YouTube</strong>.<br>
+        Subscribe to stay updated the moment new releases drop.
+      </div>
+    `
+  }
+};
+
+function openPlatformModal(key) {
+  const data = SHOW_MODAL_DATA[key];
+  if (!data) return;
+  const modal = document.getElementById('platformModal');
+  const modalEyebrow = document.getElementById('modalEyebrow');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSubtitle = document.getElementById('modalSubtitle');
+  const modalLinks = document.getElementById('modalLinks');
+  const modalExtra = document.getElementById('modalExtra');
+
+  if (modalEyebrow) modalEyebrow.textContent = data.eyebrow;
+  if (modalTitle) modalTitle.textContent = data.title;
+  if (modalSubtitle) modalSubtitle.textContent = data.subtitle;
+  if (modalLinks) {
+    modalLinks.innerHTML = data.links.map(item => `
+      <a href="${item.url}" target="_blank" rel="noopener" class="modal-item">
+        <div class="modal-item-left">
+          <div class="modal-item-icon">${item.icon}</div>
+          <div>
+            <div class="modal-item-name">${item.name}</div>
+            <div class="modal-item-desc">${item.desc}</div>
+          </div>
+        </div>
+        <span class="modal-badge">${item.badge} &rarr;</span>
+      </a>
+    `).join('');
+  }
+  if (modalExtra) modalExtra.innerHTML = data.extraHtml || '';
+  if (modal) {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closePlatformModal() {
+  const modal = document.getElementById('platformModal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  document.body.style.overflow = '';
+}
+
+// Global click event delegation for modal triggers and close buttons
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('[data-modal]');
+  if (trigger) {
+    e.preventDefault();
+    const modalKey = trigger.getAttribute('data-modal');
+    openPlatformModal(modalKey);
+    return;
+  }
+  if (e.target.closest('#modalClose') || e.target.id === 'modalBackdrop') {
+    e.preventDefault();
+    closePlatformModal();
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('platformModal');
+  if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+    closePlatformModal();
+  }
+});
 </script>
 </body>
 </html>
