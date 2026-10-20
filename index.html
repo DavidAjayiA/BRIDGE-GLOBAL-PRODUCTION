@@ -54,9 +54,8 @@
     letter-spacing:0.18em;
     text-transform:uppercase;
     color:var(--gold);
-    display:flex;align-items:center;gap:10px;
+    display:inline-block;
   }
-  .eyebrow::before{content:"";width:22px;height:1px;background:var(--gold);display:inline-block;}
   h1,h2,h3{font-family:var(--font-display);font-weight:400;letter-spacing:0.005em;text-transform:uppercase;line-height:1.05;}
   .btn{
     font-family:var(--font-mono);
@@ -257,7 +256,6 @@
   section{padding:120px 0;position:relative;}
   .on-paper{background:var(--paper);color:var(--text-on-paper);}
   .on-paper .eyebrow{color:#A8151E;}
-  .on-paper .eyebrow::before{background:#A8151E;}
   .section-head{max-width:760px;margin-bottom:56px;}
   .section-head h2{font-size:clamp(32px,4.5vw,48px);margin-top:16px;line-height:1.15;}
   .section-head p{margin-top:16px;color:inherit;opacity:0.8;font-size:16px;line-height:1.7;}
@@ -527,37 +525,111 @@
   @media (max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
 
-  /* ---------- FOUNDER'S NOTE ---------- */
-  .founder{display:grid;grid-template-columns:1.2fr 0.8fr;gap:70px;align-items:flex-start;}
-  .founder-text{
-    font-family:var(--font-body);font-size:16px;line-height:1.8;color:var(--text-on-paper);
+  /* ---------- FOUNDER'S NOTE & SLIDESHOW CARD ---------- */
+  .founder{
+    display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:stretch;
   }
-  .founder-text p{margin-bottom:18px;}
-  .founder-text p.lead{
-    font-size:clamp(19px,2.2vw,24px);font-weight:500;line-height:1.5;color:#000;
+  .founder-card{
+    background:#FFFFFF;
+    border:1px solid var(--line-on-paper);
+    padding:44px 40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+    box-shadow:0 4px 20px rgba(0,0,0,0.02);
+    min-height:540px;
   }
-  .founder-text p.lead span{color:#A8151E;}
+  .founder-card-header{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding-bottom:18px;border-bottom:1px solid var(--line-on-paper);
+    margin-bottom:24px;
+  }
+  .founder-counter{
+    font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;color:var(--text-on-paper-muted);
+  }
+  .founder-counter .curr{color:#A8151E;font-weight:600;}
+  .founder-counter .sep{margin:0 4px;opacity:0.4;}
+  .founder-slides-viewport{
+    position:relative;overflow:hidden;flex:1;
+  }
+  .founder-slide{
+    display:none;
+    animation:founderSlideIn .35s ease-out;
+  }
+  .founder-slide.active{
+    display:block;
+  }
+  @keyframes founderSlideIn{
+    from{opacity:0;transform:translateX(14px);}
+    to{opacity:1;transform:translateX(0);}
+  }
+  .founder-slide p{
+    font-family:var(--font-body);font-size:15px;line-height:1.75;
+    color:var(--text-on-paper);margin-bottom:14px;
+  }
+  .founder-slide p.lead{
+    font-size:clamp(19px,2vw,23px);font-weight:600;line-height:1.4;
+    color:#000;margin-bottom:18px;
+  }
+  .founder-slide p.lead span{color:#A8151E;}
+
+  .founder-card-footer{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+    padding-top:22px;border-top:1px solid var(--line-on-paper);
+    margin-top:22px;flex-wrap:wrap;
+  }
   .founder-signature{
-    font-family:var(--font-mono);font-size:12px;letter-spacing:0.14em;
-    text-transform:uppercase;color:#A8151E;margin-top:32px;font-weight:600;
+    font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;
+    text-transform:uppercase;color:#A8151E;font-weight:600;
+  }
+  .founder-signature span{
+    display:block;font-size:10.5px;color:var(--text-on-paper-muted);font-weight:400;letter-spacing:.06em;margin-top:3px;
+  }
+  .founder-controls{
+    display:flex;align-items:center;gap:16px;
+  }
+  .founder-dots{
+    display:flex;align-items:center;gap:6px;
+  }
+  .founder-dot{
+    width:8px;height:8px;border-radius:50%;background:rgba(20,20,20,0.18);
+    border:none;cursor:pointer;padding:0;transition:all .25s ease;
+  }
+  .founder-dot.active{
+    width:22px;border-radius:4px;background:#A8151E;
+  }
+  .founder-arrows{
+    display:flex;gap:8px;
+  }
+  .founder-btn{
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid var(--line-on-paper);background:#fff;
+    color:var(--text-on-paper);display:flex;align-items:center;justify-content:center;
+    cursor:pointer;transition:all .2s ease;padding:0;
+  }
+  .founder-btn svg{width:16px;height:16px;fill:currentColor;}
+  .founder-btn:hover:not(:disabled){
+    border-color:#A8151E;background:#A8151E;color:#fff;transform:translateY(-1px);
+  }
+  .founder-btn:disabled{
+    opacity:0.3;cursor:not-allowed;
   }
   .founder-portrait{
-    position:sticky;top:100px;
     background:linear-gradient(155deg,#1B1F29,#0A0C10);
     border:1px solid var(--line-on-paper);
     padding:16px;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:space-between;
   }
-  .founder-portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;}
+  .founder-portrait img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
   .founder-portrait .cap{
     font-family:var(--font-mono);font-size:10.5px;color:var(--text-on-paper-muted);
     letter-spacing:.08em;text-transform:uppercase;margin-top:12px;text-align:center;
   }
-  .eyebrow{
-    border: 10px solid red;
-  }
   @media (max-width:860px){
-    .founder{grid-template-columns:1fr;gap:44px;}
-    .founder-portrait{order:-1;max-width:320px;position:static;}
+    .founder{grid-template-columns:1fr;gap:36px;}
+    .founder-card{min-height:auto;padding:32px 24px;}
+    .founder-portrait{max-width:360px;margin:0 auto;}
   }
 
   /* ---------- VISION & MISSION ---------- */
@@ -1010,22 +1082,65 @@
 <!-- ================= FOUNDER'S NOTE & ABOUT ================= -->
 <section class="on-paper" id="about" style="border-top:1px solid var(--line-on-paper);">
   <div class="wrap founder reveal">
-    <div class="founder-text">
-      <div class="eyebrow">Founder's Note</div>
-      <p class="lead" style="margin-top:22px;">
-        “I have always believed in the power of a <span>good story.</span>”
-      </p>
-      <p>For years, I have worked across media — producing, presenting, creating, asking questions, listening, and sitting across from people with stories to tell.</p>
-      <p>And somewhere along the way, I realised something about myself:<br><strong>I am always looking for the story.</strong></p>
-      <p>It doesn’t matter if I’m sitting across from a celebrity, working with a brand, producing a show, walking a red carpet or watching something unfold in front of me. I find myself asking the same question:<br><em>What is the story here?</em></p>
-      <p>Because there is almost always more than what we see. There is the person behind the public image. The idea behind the brand. The meaning behind the moment. The conversation underneath the conversation. And I love finding that.</p>
-      <p>But I also love what happens next — taking that story and figuring out how it should be told. Sometimes it’s a conversation. Sometimes it’s a film. Sometimes it’s a show. Sometimes it’s an editorial. Sometimes it’s a live experience.<br><strong>The format can change. The story is what leads.</strong></p>
-      <p>That is what led me to build Bridge. I wanted to create a company that brings together the things I have spent my career learning to do — find the story, shape the idea, build the experience and make something people want to see, hear, feel and remember.</p>
-      <p>A place where brands can become stories, ideas can become experiences, conversations can become shows, and African creativity can reach audiences far beyond where it began. Because the story comes first. Always. And wherever the story needs to go, we’ll build the bridge to get it there.</p>
-      <p style="font-weight:600;font-size:17px;color:#000;">Welcome to Bridge. What is the story?</p>
-      <div class="founder-signature">
-        &mdash; Kanyinsola Olukoya<br>
-        <span style="font-size:10.5px;color:var(--text-on-paper-muted);font-weight:400;">Founder &amp; Executive Producer</span>
+    <div class="founder-card" id="founderCard">
+      <div class="founder-card-header">
+        <div class="eyebrow">Founder's Note</div>
+        <div class="founder-counter" id="founderCounter">
+          <span class="curr">01</span><span class="sep">/</span><span class="total">04</span>
+        </div>
+      </div>
+
+      <div class="founder-slides-viewport" id="founderSlides">
+        <!-- Slide 1 -->
+        <div class="founder-slide active" data-slide="0">
+          <p class="lead">“I have always believed in the power of a <span>good story.</span>”</p>
+          <p>For years, I have worked across media — producing, presenting, creating, asking questions, listening, and sitting across from people with stories to tell.</p>
+          <p>And somewhere along the way, I realised something about myself:<br><strong>I am always looking for the story.</strong></p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="founder-slide" data-slide="1">
+          <p class="lead">“What is the <span>story here?</span>”</p>
+          <p>It doesn’t matter if I’m sitting across from a celebrity, working with a brand, producing a show, walking a red carpet or watching something unfold in front of me.</p>
+          <p>Because there is almost always more than what we see. There is the person behind the public image. The idea behind the brand. The meaning behind the moment. The conversation underneath the conversation. And I love finding that.</p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="founder-slide" data-slide="2">
+          <p class="lead">“The format can change. <span>The story is what leads.</span>”</p>
+          <p>I love what happens next — taking that story and figuring out how it should be told.</p>
+          <p>Sometimes it’s a conversation. Sometimes it’s a film. Sometimes it’s a show. Sometimes it’s an editorial. Sometimes it’s a live experience. The format can change. The story is what leads.</p>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="founder-slide" data-slide="3">
+          <p class="lead">“Wherever the story needs to go, <span>we’ll build the bridge to get it there.</span>”</p>
+          <p>That is what led me to build Bridge — to bring together finding the story, shaping the idea, building the experience and making something people want to see, hear, feel and remember. Where African creativity reaches audiences far beyond where it began.</p>
+          <p style="font-weight:600;font-size:16px;color:#000;margin-top:10px;">Welcome to Bridge. What is the story?</p>
+        </div>
+      </div>
+
+      <div class="founder-card-footer">
+        <div class="founder-signature">
+          &mdash; Kanyinsola Olukoya<br>
+          <span>Founder &amp; Executive Producer</span>
+        </div>
+        <div class="founder-controls">
+          <div class="founder-dots" id="founderDots">
+            <button type="button" class="founder-dot active" data-goto="0" aria-label="Go to slide 1"></button>
+            <button type="button" class="founder-dot" data-goto="1" aria-label="Go to slide 2"></button>
+            <button type="button" class="founder-dot" data-goto="2" aria-label="Go to slide 3"></button>
+            <button type="button" class="founder-dot" data-goto="3" aria-label="Go to slide 4"></button>
+          </div>
+          <div class="founder-arrows">
+            <button type="button" class="founder-btn" id="founderPrevBtn" aria-label="Previous slide" disabled>
+              <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            <button type="button" class="founder-btn" id="founderNextBtn" aria-label="Next slide">
+              <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="founder-portrait">
@@ -1080,7 +1195,7 @@
       <div class="standard-card">
         <div class="standard-num">03</div>
         <h3>Connection</h3>
-        <p><strong >THE WORK SHOULD MEAN SOMETHING TO SOMEONE.</strong> We create stories that people can see themselves in, talk about, remember and carry beyond the screen.</p>
+        <p><strong style="font-size: 13px;">THE WORK SHOULD MEAN SOMETHING TO SOMEONE.</strong> We create stories that people can see themselves in, talk about, remember and carry beyond the screen.</p>
       </div>
     </div>
   </div>
@@ -1343,6 +1458,332 @@ if (track) {
 // ---------- Footer year ----------
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ---------- Back to Top Floating Button ----------
+(function initBackToTop() {
+  const btt = document.getElementById('backToTop');
+  if (!btt) return;
+
+  const handleScroll = () => {
+    if (window.scrollY > 200) {
+      btt.classList.add('is-visible');
+    } else {
+      btt.classList.remove('is-visible');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+
+  btt.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+})();
+
+// ---------- Founder's Note Slideshow ----------
+(function initFounderSlideshow() {
+  const slides = document.querySelectorAll('.founder-slide');
+  const dots = document.querySelectorAll('.founder-dot');
+  const prevBtn = document.getElementById('founderPrevBtn');
+  const nextBtn = document.getElementById('founderNextBtn');
+  const currEl = document.querySelector('#founderCounter .curr');
+  if (!slides.length) return;
+
+  let current = 0;
+  const total = slides.length;
+
+  function goToSlide(index) {
+    if (index < 0) index = 0;
+    if (index >= total) index = total - 1;
+    current = index;
+
+    slides.forEach((s, i) => s.classList.toggle('active', i === current));
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+    if (currEl) {
+      currEl.textContent = String(current + 1).padStart(2, '0');
+    }
+    if (prevBtn) prevBtn.disabled = current === 0;
+    if (nextBtn) nextBtn.disabled = current === total - 1;
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => goToSlide(current - 1));
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => goToSlide(current + 1));
+  }
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const target = parseInt(dot.getAttribute('data-goto'), 10);
+      goToSlide(target);
+    });
+  });
+
+  // Swipe support for touch devices
+  const card = document.getElementById('founderCard');
+  if (card) {
+    let startX = 0;
+    let endX = 0;
+    card.addEventListener('touchstart', (e) => {
+      startX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    card.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].screenX;
+      if (startX - endX > 45) goToSlide(current + 1);
+      if (endX - startX > 45) goToSlide(current - 1);
+    }, { passive: true });
+  }
+
+  goToSlide(0);
+})();
+
+// ---------- Platform & Social Selector Modals ----------
+const SHOW_MODAL_DATA = {
+  'spills-socials': {
+    eyebrow: 'SPILLS & THRILLS SHOW · SOCIAL CHANNELS',
+    title: 'Connect on Social Media',
+    subtitle: 'Follow the Spills & Thrills Show across all official channels for behind-the-scenes, clips, and daily discussions:',
+    links: [
+      {
+        name: 'Instagram',
+        desc: '@spillsandthrillsshow • Taping updates, BTS & reels',
+        url: 'https://www.instagram.com/spillsandthrillsshow?igsh=eG03dGZxemZ1NnRu',
+        badge: 'Follow',
+        icon: `<svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`
+      },
+      {
+        name: 'TikTok',
+        desc: '@spillsandthrillss • Viral clips, Vox Pops & highlights',
+        url: 'https://www.tiktok.com/@spillsandthrillss?_r=1&_t=ZS-98rXEvQFYhE',
+        badge: 'Follow',
+        icon: `<svg viewBox="0 0 24 24" fill="#00F2FE"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.298 0 .591.044.87.13V9.4a6.33 6.33 0 00-6.63 6.32 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.41a8.17 8.17 0 004.91 1.63V6.69z"/></svg>`
+      },
+      {
+        name: 'YouTube',
+        desc: '@spillsandthrillsshow • Full episodes & guest interviews',
+        url: 'https://youtube.com/@spillsandthrillsshow?si=_OMmGOXxq6NMUhGN',
+        badge: 'Subscribe',
+        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
+      },
+      {
+        name: 'Facebook',
+        desc: 'Spills and Thrills Show • Community & premieres',
+        url: 'https://www.facebook.com/share/1a9UF3qF4m/?mibextid=wwXIfr',
+        badge: 'Follow',
+        icon: `<svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`
+      },
+      {
+        name: 'X (formerly Twitter)',
+        desc: '@spills_thrills • Real-time conversation & polls',
+        url: 'https://x.com/spills_thrills',
+        badge: 'Follow',
+        icon: `<svg viewBox="0 0 24 24" fill="#FFFFFF"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`
+      }
+    ],
+    extraHtml: `
+      <div class="radio-info-box">
+        <strong>STREAM &amp; BROADCAST SCHEDULE</strong>
+        New full episodes premiere on <strong>YouTube</strong> and audio on <strong>Spotify &amp; Buzzsprout</strong>. Tune in live every <strong>Saturday</strong> on <strong>City 105.1 FM Lagos</strong>.
+      </div>
+    `
+  },
+  'ayo-socials': {
+    eyebrow: 'REAL LIFE WITH AYO ADESANYA · SOCIAL CHANNELS',
+    title: 'Connect with Ayo Adesanya',
+    subtitle: 'Follow Ayo Adesanya and the show across all official platforms for full episodes, previews and updates:',
+    links: [
+      {
+        name: 'YouTube (Ayo Adesanya TV)',
+        desc: '@ayoadesanyatv • Full conversation series & interviews',
+        url: 'https://youtube.com/@ayoadesanyatv?si=ZZZiXDjlXctmvzvV',
+        badge: 'Subscribe',
+        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
+      },
+      {
+        name: 'Instagram',
+        desc: '@ayoadesanya • Host updates, behind-the-scenes & personal moments',
+        url: 'https://www.instagram.com/ayoadesanya',
+        badge: 'Follow',
+        icon: `<svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`
+      },
+      {
+        name: 'TikTok',
+        desc: '@ayoadesanya • Episode snippets, highlights & short clips',
+        url: 'https://www.tiktok.com/@ayoadesanya',
+        badge: 'Follow',
+        icon: `<svg viewBox="0 0 24 24" fill="#00F2FE"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64c.298 0 .591.044.87.13V9.4a6.33 6.33 0 00-6.63 6.32 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.41a8.17 8.17 0 004.91 1.63V6.69z"/></svg>`
+      },
+      {
+        name: 'Bridge Global Productions',
+        desc: '@bridgeglobalproductions • Production company & executive updates',
+        url: 'https://www.instagram.com/bridgeglobalproductions?igsh=eDA5d2h6OGVnYWYz',
+        badge: 'Follow',
+        icon: `<svg viewBox="0 0 24 24" fill="#D6202B"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`
+      }
+    ],
+    extraHtml: `
+      <div class="radio-info-box">
+        <strong>FULL EPISODES ON YOUTUBE</strong>
+        All feature-length conversations and guest spotlights are streaming on <strong>Ayo Adesanya TV on YouTube</strong>.
+      </div>
+    `
+  },
+  'spills-podcasts': {
+    eyebrow: 'ORIGINAL SHOW · AUDIO & STREAMING',
+    title: 'Spills & Thrills Show',
+    subtitle: 'Choose your preferred podcast streaming app or broadcast channel:',
+    links: [
+      {
+        name: 'Spotify',
+        desc: 'Listen to all episodes & follow the podcast on Spotify',
+        url: 'https://open.spotify.com/show/6O91NC6Xg0AZhBM8afXQ64',
+        badge: 'Listen',
+        icon: `<svg viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424a.625.625 0 01-.86.208c-2.355-1.439-5.32-1.765-8.812-.967a.626.626 0 01-.28-1.22c3.818-.873 7.098-.506 9.744 1.119a.624.624 0 01.208.86zm1.224-2.724a.782.782 0 01-1.077.257c-2.696-1.657-6.806-2.136-9.995-1.168a.782.782 0 11-.453-1.498c3.64-1.106 8.188-.573 11.268 1.332a.782.782 0 01.257 1.077zm.105-2.835C14.693 9.07 9.07 8.887 5.813 9.876a.937.937 0 11-.546-1.792c3.743-1.137 9.94-.925 13.864 1.405a.938.938 0 01-1.216 1.376z"/></svg>`
+      },
+      {
+        name: 'Apple Podcasts',
+        desc: 'Stream on Apple Podcasts across iPhone, iPad & Mac',
+        url: 'https://podcasts.apple.com/us/podcast/spills-and-thrills-podcast/id1627831102',
+        badge: 'Listen',
+        icon: `<svg viewBox="0 0 24 24" fill="#B150E2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.25c2.48 0 4.5 2.02 4.5 4.5 0 1.95-1.25 3.61-3 4.22v1.53c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-1.53c-1.75-.61-3-2.27-3-4.22 0-2.48 2.02-4.5 4.5-4.5zm0 14c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`
+      },
+      {
+        name: 'Buzzsprout (All Platforms)',
+        desc: 'Web player & directory with all available audio apps',
+        url: 'https://spillsandthrillsshow.buzzsprout.com',
+        badge: 'Listen',
+        icon: `<svg viewBox="0 0 24 24" fill="#20C997"><path d="M12 1a4 4 0 00-4 4v7a4 4 0 008 0V5a4 4 0 00-4-4zm6 11a6 6 0 01-12 0H4a8 8 0 007 7.93V23h2v-3.07A8 8 0 0020 12h-2z"/></svg>`
+      },
+      {
+        name: 'YouTube Channel',
+        desc: 'Watch full video podcast episodes & exclusive cuts',
+        url: 'https://youtube.com/@spillsandthrillsshow?si=_OMmGOXxq6NMUhGN',
+        badge: 'Watch',
+        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
+      },
+      {
+        name: 'Live Radio — City 105.1 FM',
+        desc: 'Broadcast on Radio Nigeria live web stream',
+        url: 'https://www.radio-nigeria.com/city-1051-fm',
+        badge: 'Listen Live',
+        icon: `<svg viewBox="0 0 24 24" fill="#D6202B"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>`
+      },
+      {
+        name: 'Podcast RSS Feed',
+        desc: 'Direct RSS syndication link for custom podcatchers',
+        url: 'https://feeds.buzzsprout.com/1990426.rss',
+        badge: 'Copy Feed',
+        icon: `<svg viewBox="0 0 24 24" fill="#FFA500"><path d="M6.18 15.64a2.18 2.18 0 11-4.36 0 2.18 2.18 0 014.36 0zM1.82 2.01v3.52c9.08 0 16.47 7.39 16.47 16.47h3.52C21.81 10.98 12.83 2.01 1.82 2.01zm0 7.04v3.52c5.2 0 9.43 4.23 9.43 9.43h3.52c0-7.14-5.81-12.95-12.95-12.95z"/></svg>`
+      }
+    ],
+    extraHtml: `
+      <div class="radio-info-box">
+        <strong>RADIO BROADCAST SCHEDULE</strong>
+        Live on Radio (<strong>City 105.1 FM Lagos</strong>) every <strong>Saturday</strong>.<br>
+        New video & audio episodes drop every <strong>Thursday</strong> on YouTube &amp; Podcast platforms.<br>
+        <a href="https://www.radio-nigeria.com/city-1051-fm" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;display:inline-block;margin-top:6px;">Listen to City 105.1 FM live online &rarr;</a>
+      </div>
+    `
+  },
+  'ayo-podcasts': {
+    eyebrow: 'ORIGINAL SHOW · CHANNELS',
+    title: 'Real Life with Ayo Adesanya',
+    subtitle: 'Stream, watch and follow conversations hosted by Ayo Adesanya:',
+    links: [
+      {
+        name: 'Ayo Adesanya TV on YouTube',
+        desc: 'Watch full episodes and interviews',
+        url: 'https://youtube.com/@ayoadesanyatv?si=ZZZiXDjlXctmvzvV',
+        badge: 'Watch Now',
+        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
+      },
+      {
+        name: 'Podcast Distribution',
+        desc: 'Audio episodes rolling out soon to Spotify & Apple Podcasts',
+        url: 'https://youtube.com/@ayoadesanyatv?si=ZZZiXDjlXctmvzvV',
+        badge: 'Coming Soon',
+        icon: `<svg viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424a.625.625 0 01-.86.208c-2.355-1.439-5.32-1.765-8.812-.967a.626.626 0 01-.28-1.22c3.818-.873 7.098-.506 9.744 1.119a.624.624 0 01.208.86zm1.224-2.724a.782.782 0 01-1.077.257c-2.696-1.657-6.806-2.136-9.995-1.168a.782.782 0 11-.453-1.498c3.64-1.106 8.188-.573 11.268 1.332a.782.782 0 01.257 1.077zm.105-2.835C14.693 9.07 9.07 8.887 5.813 9.876a.937.937 0 11-.546-1.792c3.743-1.137 9.94-.925 13.864 1.405a.938.938 0 01-1.216 1.376z"/></svg>`
+      }
+    ],
+    extraHtml: `
+      <div class="radio-info-box">
+        <strong>FULL CONVERSATIONS STREAMING NOW</strong>
+        All full episodes and exclusive interviews are streaming on <strong>Ayo Adesanya TV on YouTube</strong>.<br>
+        Subscribe to stay updated the moment new releases drop.
+      </div>
+    `
+  }
+};
+
+function openPlatformModal(key) {
+  const data = SHOW_MODAL_DATA[key];
+  if (!data) return;
+  const modal = document.getElementById('platformModal');
+  const modalEyebrow = document.getElementById('modalEyebrow');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSubtitle = document.getElementById('modalSubtitle');
+  const modalLinks = document.getElementById('modalLinks');
+  const modalExtra = document.getElementById('modalExtra');
+
+  if (modalEyebrow) modalEyebrow.textContent = data.eyebrow;
+  if (modalTitle) modalTitle.textContent = data.title;
+  if (modalSubtitle) modalSubtitle.textContent = data.subtitle;
+  if (modalLinks) {
+    modalLinks.innerHTML = data.links.map(item => `
+      <a href="${item.url}" target="_blank" rel="noopener" class="modal-item">
+        <div class="modal-item-left">
+          <div class="modal-item-icon">${item.icon}</div>
+          <div>
+            <div class="modal-item-name">${item.name}</div>
+            <div class="modal-item-desc">${item.desc}</div>
+          </div>
+        </div>
+        <span class="modal-badge">${item.badge} &rarr;</span>
+      </a>
+    `).join('');
+  }
+  if (modalExtra) modalExtra.innerHTML = data.extraHtml || '';
+  if (modal) {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closePlatformModal() {
+  const modal = document.getElementById('platformModal');
+  if (modal) {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  document.body.style.overflow = '';
+}
+
+// Global click event delegation for modal triggers and close buttons
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('[data-modal]');
+  if (trigger) {
+    e.preventDefault();
+    const modalKey = trigger.getAttribute('data-modal');
+    openPlatformModal(modalKey);
+    return;
+  }
+  if (e.target.closest('#modalClose') || e.target.id === 'modalBackdrop') {
+    e.preventDefault();
+    closePlatformModal();
+  }
+});
+
+window.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('platformModal');
+  if (e.key === 'Escape' && modal && modal.classList.contains('is-open')) {
+    closePlatformModal();
+  }
+});
 </script>
 </body>
 </html>
