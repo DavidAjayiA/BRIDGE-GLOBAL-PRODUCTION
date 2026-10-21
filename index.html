@@ -963,14 +963,10 @@
               <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>
               YouTube
             </a>
-            <a href="https://open.spotify.com/show/6O91NC6Xg0AZhBM8afXQ64" target="_blank" rel="noopener" class="platform-pill">
-              <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424a.625.625 0 01-.86.208c-2.355-1.439-5.32-1.765-8.812-.967a.626.626 0 01-.28-1.22c3.818-.873 7.098-.506 9.744 1.119a.624.624 0 01.208.86zm1.224-2.724a.782.782 0 01-1.077.257c-2.696-1.657-6.806-2.136-9.995-1.168a.782.782 0 11-.453-1.498c3.64-1.106 8.188-.573 11.268 1.332a.782.782 0 01.257 1.077zm.105-2.835C14.693 9.07 9.07 8.887 5.813 9.876a.937.937 0 11-.546-1.792c3.743-1.137 9.94-.925 13.864 1.405a.938.938 0 01-1.216 1.376z"/></svg>
-              Spotify
-            </a>
-            <button type="button" class="platform-pill" data-modal="spills-podcasts" title="Listen on Buzzsprout, Spotify, Apple Podcasts, etc.">
+            <a href="https://spillsandthrillsshow.buzzsprout.com" target="_blank" rel="noopener" class="platform-pill" title="Listen on Buzzsprout (includes Spotify, Apple Podcasts &amp; all platforms)">
               <svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 00-4 4v7a4 4 0 008 0V5a4 4 0 00-4-4zm6 11a6 6 0 01-12 0H4a8 8 0 007 7.93V23h2v-3.07A8 8 0 0020 12h-2z"/></svg>
-              Podcast Platforms
-            </button>
+              Podcasts (Buzzsprout)
+            </a>
             <a href="https://www.radio-nigeria.com/city-1051-fm" target="_blank" rel="noopener" class="platform-pill">
               <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
               Radio (City 105.1 FM)
@@ -1268,8 +1264,7 @@
           <a href="https://youtube.com/@spillsandthrillsshow" target="_blank" rel="noopener">YouTube</a>
           <a href="https://www.tiktok.com/@bridge_global?_r=1&_t=ZS-98rWxJMYRC4" target="_blank" rel="noopener">TikTok</a>
           <a href="https://www.linkedin.com/company/bridge-global-productions/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://open.spotify.com/show/6O91NC6Xg0AZhBM8afXQ64" target="_blank" rel="noopener">Spotify</a>
-          <a href="https://podcasts.apple.com/us/podcast/spills-and-thrills-podcast/id1627831102" target="_blank" rel="noopener">Apple Podcasts</a>
+          <a href="https://spillsandthrillsshow.buzzsprout.com" target="_blank" rel="noopener">Podcasts (Buzzsprout)</a>
         </div>
       </div>
     </div>
@@ -1635,35 +1630,14 @@ const SHOW_MODAL_DATA = {
   'spills-podcasts': {
     eyebrow: 'ORIGINAL SHOW · AUDIO & STREAMING',
     title: 'Spills & Thrills Show',
-    subtitle: 'Choose your preferred podcast streaming app or broadcast channel:',
+    subtitle: 'Stream episodes directly on Buzzsprout (includes Spotify, Apple Podcasts & all platforms):',
     links: [
       {
-        name: 'Spotify',
-        desc: 'Listen to all episodes & follow the podcast on Spotify',
-        url: 'https://open.spotify.com/show/6O91NC6Xg0AZhBM8afXQ64',
-        badge: 'Listen',
-        icon: `<svg viewBox="0 0 24 24" fill="#1ED760"><path d="M12 2C6.477 2 2 6.477 2 12c0 5.524 4.477 10 10 10s10-4.476 10-10c0-5.523-4.477-10-10-10zm4.586 14.424a.625.625 0 01-.86.208c-2.355-1.439-5.32-1.765-8.812-.967a.626.626 0 01-.28-1.22c3.818-.873 7.098-.506 9.744 1.119a.624.624 0 01.208.86zm1.224-2.724a.782.782 0 01-1.077.257c-2.696-1.657-6.806-2.136-9.995-1.168a.782.782 0 11-.453-1.498c3.64-1.106 8.188-.573 11.268 1.332a.782.782 0 01.257 1.077zm.105-2.835C14.693 9.07 9.07 8.887 5.813 9.876a.937.937 0 11-.546-1.792c3.743-1.137 9.94-.925 13.864 1.405a.938.938 0 01-1.216 1.376z"/></svg>`
-      },
-      {
-        name: 'Apple Podcasts',
-        desc: 'Stream on Apple Podcasts across iPhone, iPad & Mac',
-        url: 'https://podcasts.apple.com/us/podcast/spills-and-thrills-podcast/id1627831102',
-        badge: 'Listen',
-        icon: `<svg viewBox="0 0 24 24" fill="#B150E2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3.25c2.48 0 4.5 2.02 4.5 4.5 0 1.95-1.25 3.61-3 4.22v1.53c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5v-1.53c-1.75-.61-3-2.27-3-4.22 0-2.48 2.02-4.5 4.5-4.5zm0 14c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`
-      },
-      {
-        name: 'Buzzsprout (All Platforms)',
-        desc: 'Web player & directory with all available audio apps',
+        name: 'Buzzsprout Platform Hub',
+        desc: 'Listen directly or choose Spotify, Apple Podcasts, Google Podcasts & more',
         url: 'https://spillsandthrillsshow.buzzsprout.com',
-        badge: 'Listen',
+        badge: 'Listen Now',
         icon: `<svg viewBox="0 0 24 24" fill="#20C997"><path d="M12 1a4 4 0 00-4 4v7a4 4 0 008 0V5a4 4 0 00-4-4zm6 11a6 6 0 01-12 0H4a8 8 0 007 7.93V23h2v-3.07A8 8 0 0020 12h-2z"/></svg>`
-      },
-      {
-        name: 'YouTube Channel',
-        desc: 'Watch full video podcast episodes & exclusive cuts',
-        url: 'https://youtube.com/@spillsandthrillsshow?si=_OMmGOXxq6NMUhGN',
-        badge: 'Watch',
-        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
       },
       {
         name: 'Live Radio — City 105.1 FM',
@@ -1673,18 +1647,17 @@ const SHOW_MODAL_DATA = {
         icon: `<svg viewBox="0 0 24 24" fill="#D6202B"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>`
       },
       {
-        name: 'Podcast RSS Feed',
-        desc: 'Direct RSS syndication link for custom podcatchers',
-        url: 'https://feeds.buzzsprout.com/1990426.rss',
-        badge: 'Copy Feed',
-        icon: `<svg viewBox="0 0 24 24" fill="#FFA500"><path d="M6.18 15.64a2.18 2.18 0 11-4.36 0 2.18 2.18 0 014.36 0zM1.82 2.01v3.52c9.08 0 16.47 7.39 16.47 16.47h3.52C21.81 10.98 12.83 2.01 1.82 2.01zm0 7.04v3.52c5.2 0 9.43 4.23 9.43 9.43h3.52c0-7.14-5.81-12.95-12.95-12.95z"/></svg>`
+        name: 'YouTube Channel',
+        desc: 'Watch full video podcast episodes & exclusive cuts',
+        url: 'https://youtube.com/@spillsandthrillsshow?si=_OMmGOXxq6NMUhGN',
+        badge: 'Watch Video',
+        icon: `<svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3 3 0 00-2.11-2.12C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.39.57A3 3 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3 3 0 002.11 2.12C4.5 20.5 12 20.5 12 20.5s7.5 0 9.39-.57a3 3 0 002.11-2.12A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>`
       }
     ],
     extraHtml: `
       <div class="radio-info-box">
-        <strong>RADIO BROADCAST SCHEDULE</strong>
-        Live on Radio (<strong>City 105.1 FM Lagos</strong>) every <strong>Saturday</strong>.<br>
-        New video & audio episodes drop every <strong>Thursday</strong> on YouTube &amp; Podcast platforms.<br>
+        <strong>ALL AUDIO PLATFORMS ON BUZZSPROUT</strong>
+        Buzzsprout connects directly to Spotify, Apple Podcasts, iHeart, and more. Tune in live every <strong>Saturday</strong> on <strong>City 105.1 FM Lagos</strong>.<br>
         <a href="https://www.radio-nigeria.com/city-1051-fm" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;display:inline-block;margin-top:6px;">Listen to City 105.1 FM live online &rarr;</a>
       </div>
     `
