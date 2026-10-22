@@ -18,8 +18,9 @@
     --paper-2:#EAE4D6;
     --gold:#D6202B;
     --gold-2:#F0464F;
-    --text-on-ink:#F2F1EE;
-    --text-on-ink-muted:#B8BAC2;
+    --text-on-ink:#B8BAC2;
+    /* --text-on-ink-muted:#B8BAC2; */
+    --text-on-ink-muted:#ffffff;
     --text-on-paper:#141414;
     --text-on-paper-muted:#6B6B6B;
     --line-on-ink:rgba(242,241,238,0.14);
@@ -97,6 +98,7 @@
     letter-spacing:0.01em;
     display:flex;align-items:baseline;gap:8px;
     text-transform:uppercase;
+    color: white;
   }
   .logo .mark{color:var(--gold);}
   .logo .sub{
@@ -106,7 +108,8 @@
     color:#fff;
     text-transform:uppercase;font-weight:400;
   }
-  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links{
+    display:flex;align-items:center;gap:32px;}
   .nav-links a{
     font-family:var(--font-mono);
     font-size:12px;
@@ -207,7 +210,7 @@
     font-size:clamp(40px, 7.5vw, 96px);
     line-height:0.98;
     max-width:960px;
-    color:var(--text-on-ink);
+    color:var(--text-on-ink-muted);
   }
   .hero-content h1 em{font-style:normal;color:var(--gold);}
   .hero-sub{
@@ -280,7 +283,7 @@
   .work-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;}
   .work-card-num{font-family:var(--font-mono);font-size:11px;color:#A8151E;letter-spacing:.1em;}
   .work-card h3{font-size:clamp(20px,2.2vw,26px);color:var(--text-on-paper);line-height:1.2;}
-  .work-card-desc{color:var(--text-on-paper-muted);font-size:14px;margin-top:8px;line-height:1.6;}
+  .work-card-desc{color:var(--text-on-paper);font-size:14px;margin-top:8px;line-height:1.6;}
   .work-tags{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px;}
   .work-pill{
     font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;
@@ -323,6 +326,8 @@
   .clip-caption{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--text-on-ink);line-height:1.5;}
   .clip-caption .k{color:var(--gold-2);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
 
+
+
   /* ---------- BRIDGE ORIGINALS ---------- */
   .originals-section{background:var(--ink-2);border-top:1px solid var(--line-on-ink);border-bottom:1px solid var(--line-on-ink);}
   .shows{display:flex;flex-direction:column;gap:1px;background:var(--line-on-ink);border:1px solid var(--line-on-ink);margin-top:40px;}
@@ -347,7 +352,7 @@
   .show-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease;}
   .show-video.visible{opacity:1;}
   .show-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);}
-  .show-card h3{font-size:clamp(24px,2.6vw,34px);margin:14px 0 10px;}
+  .show-card h3{color: var(--text-on-ink-muted);font-size:clamp(24px,2.6vw,34px);margin:14px 0 10px;}
   .show-card p{color:var(--text-on-ink-muted);font-size:15px;line-height:1.7;max-width:480px;}
   .platforms{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 28px;}
   .platform-pill{
@@ -521,7 +526,7 @@
   .service-cell:hover{background:var(--paper-2);}
   .service-cell .num{font-family:var(--font-mono);font-size:11px;color:#A8151E;letter-spacing:.1em;font-weight:600;}
   .service-cell h3{font-family:var(--font-display);font-size:18px;margin-top:14px;line-height:1.25;}
-  .service-cell p{color:var(--text-on-paper-muted);font-size:14px;margin-top:10px;line-height:1.6;}
+  .service-cell p{color: var(--text-on-paper);font-size:14px;margin-top:10px;line-height:1.6;}
   @media (max-width:900px){.services-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:560px){.services-grid{grid-template-columns:1fr;}}
 
@@ -632,6 +637,7 @@
     .founder-portrait{max-width:360px;margin:0 auto;}
   }
 
+
   /* ---------- VISION & MISSION ---------- */
   .vm-section{background:var(--ink);padding:100px 0;}
   .vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-on-ink);border:1px solid var(--line-on-ink);margin-top:40px;}
@@ -641,6 +647,8 @@
   .vm-card p{color:var(--text-on-ink-muted);font-size:15px;line-height:1.7;}
   @media (max-width:760px){.vm-grid{grid-template-columns:1fr;}}
 
+
+
   /* ---------- THE BRIDGE STANDARD ---------- */
   .standard-section{background:var(--ink);padding:80px 0 120px;border-top:1px solid var(--line-on-ink);}
   .standard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
@@ -649,8 +657,8 @@
     border-top:2px solid var(--gold);
   }
   .standard-num{font-family:var(--font-mono);font-size:11px;color:var(--gold);letter-spacing:.1em;margin-bottom:12px;}
-  .standard-card h3{font-size:20px;margin-bottom:12px;}
-  .standard-card p{color:var(--text-on-ink-muted);font-size:14.5px;line-height:1.7;}
+  .standard-card h3{color: var(--text-on-ink-muted);font-size:20px;margin-bottom:12px;}
+  .standard-card p{font-size:14.5px;line-height:1.7;}
   @media (max-width:800px){.standard-grid{grid-template-columns:1fr;}}
 
   .ticker-wrap{overflow:hidden;border-top:1px solid var(--line-on-ink);border-bottom:1px solid var(--line-on-ink);padding:22px 0;margin:60px 0 0;}
@@ -756,8 +764,9 @@
   <div class="reel-badge" id="reelBadge"><span class="dot"></span>Reel preview</div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="eyebrow hero-tag">STORIES MOVE CULTURE.</div>
-    <h1>WE <em>BRIDGE</em> STORIES<br>TO THE WORLD.</h1>
+    <div class="eyebrow hero-tag">STORIES MOVE CULTURE</div>
+    <h1>WE <em>BRIDGE</em> STORIES<br>TO THE WORLD</h1>
+    <!-- . -->
     <p class="hero-sub">A media and production company creating original shows, brand films, live experiences and culture-driven stories from Africa for global audiences.</p>
     <div class="hero-actions">
       <a href="#work" class="btn solid">Watch Our Work</a>
@@ -788,8 +797,8 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Portfolio</div>
-      <h2>The work speaks first.</h2>
-      <p>At Bridge, we believe you should be able to see what we do — not just read about it. Explore our client campaigns, original shows, premiere coverage and cultural storytelling.</p>
+      <h2>The work speaks first</h2>
+      <p style="color: var(--text-on-paper)">At Bridge, we believe you should be able to see what we do, and not just read about it. Explore our client campaigns, original shows, premiere coverage and cultural storytelling.</p>
     </div>
 
     <div class="work-grid reveal">
@@ -797,7 +806,7 @@
       <div class="work-card">
         <div>
           <div class="work-card-head">
-            <span class="work-card-num">01 / BRAND</span>
+            <span class="work-card-num">BRAND</span>
           </div>
           <h3>Brand Films &amp; Campaigns</h3>
           <p class="work-card-desc">Commercials, brand films, and visual campaigns that give industry-leading brands something memorable to say.</p>
@@ -820,12 +829,12 @@
       <div class="work-card">
         <div>
           <div class="work-card-head">
-            <span class="work-card-num">02 / CONTENT</span>
+            <span class="work-card-num">CONTENT</span>
           </div>
           <h3>Show &amp; Content Production</h3>
           <p class="work-card-desc">High-production talk formats, celebrity spotlight specials, and long-form storytelling that captivate audiences across Africa and beyond.</p>
           <div class="work-tags">
-            <a href="https://youtube.com/@spillsandthrillsshow" target="_blank" rel="noopener" class="work-pill">Kamo</a>
+            <a href="https://youtube.com/@spillsandthrillsshow" target="_blank" rel="noopener" class="work-pill">Kamo State</a>
             <a href="https://youtube.com/@spillsandthrillsshow" target="_blank" rel="noopener" class="work-pill">Eniola Ajao</a>
             <a href="https://youtube.com/@spillsandthrillsshow" target="_blank" rel="noopener" class="work-pill">Faith Adewale</a>
             <a href="https://youtube.com/@ayoadesanyatv" target="_blank" rel="noopener" class="work-pill">Real Life with Ayo Adesanya</a>
@@ -843,7 +852,7 @@
       <div class="work-card">
         <div>
           <div class="work-card-head">
-            <span class="work-card-num">03 / LIVE</span>
+            <span class="work-card-num">LIVE</span>
           </div>
           <h3>Live &amp; Event Coverage</h3>
           <p class="work-card-desc">Capturing the electric energy, red-carpet spectacle, and behind-the-scenes access for major cinematic premieres and television events.</p>
@@ -861,10 +870,12 @@
       <div class="work-card">
         <div>
           <div class="work-card-head">
-            <span class="work-card-num">04 / CULTURE</span>
+            <span class="work-card-num">CULTURE</span>
           </div>
           <h3>Red Carpets &amp; Vox Pops</h3>
-          <p class="work-card-desc">Conversations. Reactions. Culture in real time. Dynamic on-the-ground interviews capturing unscripted public pulse and celebrity sentiment.</p>
+          <p class="work-card-desc">
+           Conversations, Reactions, and Culture in real time
+            </p>
           <div class="work-tags">
             <span class="work-pill">Premiere Nights</span>
             <span class="work-pill">Street Interviews</span>
@@ -879,10 +890,12 @@
       <div class="work-card">
         <div>
           <div class="work-card-head">
-            <span class="work-card-num">05 / EDITORIAL</span>
+            <span class="work-card-num">EDITORIAL</span>
           </div>
           <h3>Editorial Features</h3>
-          <p class="work-card-desc">Interviews, features and stories that go beyond the obvious — digging deep into the journeys, philosophies, and crafts of prominent creators.</p>
+          <p class="work-card-desc">
+          Interviews, features and stories that go beyond the obvious.
+            </p>
           <div class="work-tags">
             <span class="work-pill">Extended Cuts</span>
             <span class="work-pill">Personality Profiles</span>
@@ -896,10 +909,12 @@
       <div class="work-card">
         <div>
           <div class="work-card-head">
-            <span class="work-card-num">06 / MEDIA</span>
+            <span class="work-card-num">MEDIA</span>
           </div>
           <h3>Industry / Media</h3>
-          <p class="work-card-desc">Behind the scenes, media moments, and authentic stories from the heart of the Nigerian and African creative industry we champion.</p>
+          <p class="work-card-desc">
+           Behind the scenes, media moments and stories from the industry we work in
+            </p>
           <div class="work-tags">
             <span class="work-pill">On Set Taping</span>
             <span class="work-pill">Crew Moments</span>
@@ -912,35 +927,18 @@
   </div>
 </section>
 
-<!-- ================= THE WORK IN MOTION ================= -->
-<section class="motion-section" id="motion">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">The Work In Motion</div>
-      <h2>Not everything happens<br>on the final screen.</h2>
-      <p style="color:var(--text-on-ink-muted);">Behind every story are the people, cameras, conversations, locations, lights, rehearsals, retakes, red carpets and little moments that make the work what it is.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--gold);">
-        <span>BEHIND THE SCENES</span><span>•</span>
-        <span>ON SET</span><span>•</span>
-        <span>IN STUDIO</span><span>•</span>
-        <span>LIVE</span><span>•</span>
-        <span>ON THE RED CARPET</span><span>•</span>
-        <span>IN PRODUCTION</span>
-      </div>
-    </div>
-  </div>
-  <div class="carousel-viewport" id="carouselViewport">
-    <div class="carousel-track" id="carouselTrack"></div>
-  </div>
-</section>
+
+
 
 <!-- ================= BRIDGE ORIGINALS ================= -->
 <section class="originals-section" id="originals">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Bridge Originals</div>
-      <h2>Stories we create.<br>Formats we own.</h2>
-      <p>Bridge Originals is where our own ideas become shows, formats and conversations built to travel across digital, broadcast, and audio platforms worldwide.</p>
+      <h2 style="color: var(--text-on-ink-muted);">Stories we create<br>Formats we own</h2>
+      <p style="color: white;">
+   Bridge Originals is where our own ideas become shows, formats and conversations.
+      </p>
     </div>
   </div>
 
@@ -1021,12 +1019,13 @@
   </div>
 </section>
 
+
 <!-- ================= WHAT WE DO ================= -->
 <section class="on-paper" id="services">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">What We Do</div>
-      <h2>The format can change.<br>The story is what leads.</h2>
+      <h2>The format can change<br>The story is what leads</h2>
     </div>
     <div class="services-grid reveal">
       <div class="service-cell">
@@ -1075,6 +1074,7 @@
   </div>
 </section>
 
+
 <!-- ================= FOUNDER'S NOTE & ABOUT ================= -->
 <section class="on-paper" id="about" style="border-top:1px solid var(--line-on-paper);">
   <div class="wrap founder reveal">
@@ -1098,7 +1098,9 @@
         <div class="founder-slide" data-slide="1">
           <p class="lead">“What is the <span>story here?</span>”</p>
           <p>It doesn’t matter if I’m sitting across from a celebrity, working with a brand, producing a show, walking a red carpet or watching something unfold in front of me.</p>
-          <p>Because there is almost always more than what we see. There is the person behind the public image. The idea behind the brand. The meaning behind the moment. The conversation underneath the conversation. And I love finding that.</p>
+          <p>Because there is almost always more than what we see. There is the person behind the public image.
+             The idea behind the brand. The meaning behind the moment. The conversation underneath the conversation. 
+            And I love finding that.</p>
         </div>
 
         <!-- Slide 3 -->
@@ -1111,15 +1113,21 @@
         <!-- Slide 4 -->
         <div class="founder-slide" data-slide="3">
           <p class="lead">“Wherever the story needs to go, <span>we’ll build the bridge to get it there.</span>”</p>
-          <p>That is what led me to build Bridge — to bring together finding the story, shaping the idea, building the experience and making something people want to see, hear, feel and remember. Where African creativity reaches audiences far beyond where it began.</p>
+          <p>That is what led me to build Bridge, I wanted to create a company that brings together the things I have spent my career learning to
+do; find the story, shape the idea, build the experience and make something people want to
+see, hear, feel and remember. 
+           A place where brands can become stories, ideas can become experiences, conversations can
+become shows, and African creativity can reach audiences far beyond where it began.
+Because the story comes first. Always.
+And wherever the story needs to go, we’ll build the <span style="color: #A8151E;" font-weight: bold; font-size: 16px;">bridge</span> to get it there.</p>
           <p style="font-weight:600;font-size:16px;color:#000;margin-top:10px;">Welcome to Bridge. What is the story?</p>
         </div>
       </div>
 
       <div class="founder-card-footer">
         <div class="founder-signature">
-          &mdash; Kanyinsola Olukoya<br>
-          <span>Founder &amp; Executive Producer</span>
+           Kanyinsola Olukoya<br>
+          <span style="color: var(--ink);">Founder &amp; Executive Producer</span>
         </div>
         <div class="founder-controls">
           <div class="founder-dots" id="founderDots">
@@ -1146,18 +1154,21 @@
   </div>
 </section>
 
+
+
 <!-- ================= VISION & MISSION ================= -->
 <section class="vm-section">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Vision &amp; Mission</div>
-      <h2>Built to take African creativity further.</h2>
+      <h2 style="color: var(--text-on-ink-muted);">Built to take African creativity further</h2>
     </div>
     <div class="vm-grid reveal">
       <div class="vm-card">
         <h3>Vision</h3>
-        <div class="vm-main">To build a global home for African stories.</div>
-        <p>A place where great ideas, talent and creativity can travel further.</p>
+        <div class="vm-main">To build a global home for African stories</div>
+        <p>A place where great ideas, talent and creativity can 
+          travel further.</p>
       </div>
       <div class="vm-card">
         <h3>Mission</h3>
@@ -1168,30 +1179,32 @@
   </div>
 </section>
 
+
 <!-- ================= THE BRIDGE STANDARD ================= -->
 <section class="standard-section">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">The Bridge Standard</div>
-      <h2>We don’t believe in making<br>things just to make them.</h2>
-      <p>Every story deserves clarity. Every idea deserves intention. Every piece of work should leave an impression.</p>
+      <h2 style="font-size: 43px; color: var(--text-on-ink-muted);">We don’t believe in making<br>things just to make them</h2>
+      <p style="color: var(--text-on-ink-muted);">Every story deserves clarity, Every idea deserves intention, and
+         Every piece of work should leave an impression.</p>
     </div>
 
     <div class="standard-grid reveal">
       <div class="standard-card">
         <div class="standard-num">01</div>
         <h3>Clarity</h3>
-        <p><strong style="font-size: 13px;">KNOW THE STORY BEFORE WE TELL IT.</strong> We ask the right questions, find what matters and understand what we’re really trying to say.</p>
+        <p><strong style="font-size: 13px; color: var(--text-on-ink-muted);">KNOW THE STORY BEFORE WE TELL IT.</strong> We ask the right questions, find what matters and understand what we’re really trying to say.</p>
       </div>
       <div class="standard-card">
         <div class="standard-num">02</div>
         <h3>Craft</h3>
-        <p><strong style="font-size: 13px;">GOOD IDEAS DESERVE GOOD EXECUTION.</strong> From the first frame to the final detail, we care about how the work looks, sounds, feels and comes together.</p>
+        <p><strong style="font-size: 13px; color: var(--text-on-ink-muted);">GOOD IDEAS DESERVE GOOD EXECUTION.</strong> From the first frame to the final detail, we care about how the work looks, sounds, feels and comes together.</p>
       </div>
       <div class="standard-card">
         <div class="standard-num">03</div>
         <h3>Connection</h3>
-        <p><strong style="font-size: 13px;">THE WORK SHOULD MEAN SOMETHING TO SOMEONE.</strong> We create stories that people can see themselves in, talk about, remember and carry beyond the screen.</p>
+        <p><strong style="font-size: 13px; color: var(--text-on-ink-muted);">THE WORK SHOULD MEAN SOMETHING TO SOMEONE.</strong> We create stories that people can see themselves in, talk about, remember and carry beyond the screen.</p>
       </div>
     </div>
   </div>
@@ -1210,11 +1223,40 @@
   </div>
 </section>
 
+
+
+<!-- ================= THE WORK IN MOTION ================= -->
+<section class="motion-section" id="motion">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">The Work In Motion</div>
+      <h2 style="color: var(--paper);">Not everything happens<br>on the final screen</h2>
+      <p style="color:var(--paper);">Behind every story are the people, cameras, conversations, locations, lights, rehearsals, retakes, red carpets and little moments that make the work what it is.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;color:var(--gold);">
+        <span>BEHIND THE SCENES</span><span>•</span>
+        <span>ON SET</span><span>•</span>
+        <span>IN STUDIO</span><span>•</span>
+        <span>LIVE</span><span>•</span>
+        <span>ON THE RED CARPET</span><span>•</span>
+        <span>IN PRODUCTION</span>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-viewport" id="carouselViewport">
+    <div class="carousel-track" id="carouselTrack"></div>
+  </div>
+</section>
+
+
+
+
+
+
 <!-- ================= FINAL CTA / CONTACT ================= -->
 <section class="contact" id="contact">
   <div class="wrap contact-inner reveal">
     <div class="eyebrow" style="justify-content:center;">Let's Build Something Worth Crossing</div>
-    <h2>What are we building?</h2>
+    <h2 style="color: var(--paper);">What are we building?</h2>
     <div class="contact-prompts">
       <span class="contact-prompt-pill">A brand film?</span>
       <span class="contact-prompt-pill">An original show?</span>
@@ -1223,9 +1265,9 @@
       <span class="contact-prompt-pill">A story that deserves a bigger audience?</span>
     </div>
     <div class="contact-build">Let's build it.</div>
-    <a href="mailto:bridgeglobalproductions@gmail.com" class="btn solid" style="font-size:13px;padding:16px 28px;">Start A Project &rarr;</a>
+    <a href="mailto:bridgeglobalproductions@gmail.com" class="btn solid" style="font-size:13px;padding:16px 28px;color: var(--paper);">Start A Project &rarr;</a>
     <br>
-    <a href="mailto:bridgeglobalproductions@gmail.com" class="email-link">bridgeglobalproductions@gmail.com</a>
+    <a href="mailto:bridgeglobalproductions@gmail.com" style="color:var(--paper)" class="email-link">bridgeglobalproductions@gmail.com</a>
     <div class="contact-socials">
       <a href="https://www.instagram.com/bridgeglobalproductions?igsh=eDA5d2h6OGVnYWYz" target="_blank" rel="noopener" aria-label="Bridge Global Productions on Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.42.56.21.96.48 1.38.9.42.42.68.81.9 1.38.17.42.37 1.06.42 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.17-1.06.37-2.23.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.43-.37-1.06-.42-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.17 1.06-.37 2.23-.42C8.42 2.17 8.8 2.16 12 2.16zm0 1.98c-3.15 0-3.5.01-4.74.07-1.02.05-1.58.22-1.95.36-.49.19-.84.42-1.21.79-.37.37-.6.72-.79 1.21-.14.37-.31.93-.36 1.95-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.02.22 1.58.36 1.95.19.49.42.84.79 1.21.37.37.72.6 1.21.79.37.14.93.31 1.95.36 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.02-.05 1.58-.22 1.95-.36.49-.19.84-.42 1.21-.79.37-.37.6-.72.79-1.21.14-.37.31-.93.36-1.95.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.02-.22-1.58-.36-1.95-.19-.49-.42-.84-.79-1.21-.37-.37-.72-.6-1.21-.79-.37-.14-.93-.31-1.95-.36-1.24-.06-1.59-.07-4.74-.07zm0 3.56a4.3 4.3 0 110 8.6 4.3 4.3 0 010-8.6zm0 1.98a2.32 2.32 0 100 4.64 2.32 2.32 0 000-4.64zm5.48-2.2a1.01 1.01 0 11-2.02 0 1.01 1.01 0 012.02 0z"/></svg>
@@ -1259,7 +1301,7 @@
           <a href="#contact">Contact</a>
         </div>
         <div class="footer-col">
-          <h4>Social Channels</h4>
+          <h4>Socials</h4>
           <a href="https://www.instagram.com/bridgeglobalproductions?igsh=eDA5d2h6OGVnYWYz" target="_blank" rel="noopener">Instagram</a>
           <a href="https://youtube.com/@spillsandthrillsshow" target="_blank" rel="noopener">YouTube</a>
           <a href="https://www.tiktok.com/@bridge_global?_r=1&_t=ZS-98rWxJMYRC4" target="_blank" rel="noopener">TikTok</a>
